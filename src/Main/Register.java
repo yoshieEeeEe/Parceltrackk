@@ -5,6 +5,9 @@
  */
 package Main;
 
+import config.config;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dell
@@ -33,18 +36,18 @@ public class Register extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        lastname = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        registerpanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        fullname = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        loginbtn = new javax.swing.JLabel();
+        pass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,41 +69,31 @@ public class Register extends javax.swing.JFrame {
 
         jLabel5.setText("Last name: ");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 270, -1));
+        jPanel3.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 270, -1));
 
         jLabel6.setText("Email: ");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
+
+        email.setText(" ");
+        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
 
         jLabel7.setText("Password:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 0));
+        registerpanel.setBackground(new java.awt.Color(204, 204, 0));
+        registerpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerpanelMouseClicked(evt);
+            }
+        });
+        registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Sign Up");
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel8.setText("Register");
+        registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jLabel8)
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 240, 60));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
+        jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 220, 30));
+        jPanel3.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
 
         jLabel4.setText("First name: ");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
@@ -110,11 +103,19 @@ public class Register extends javax.swing.JFrame {
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         jLabel9.setText("Already have an account?");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
 
-        jLabel10.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel10.setText("Log In");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, -1, -1));
+        loginbtn.setForeground(new java.awt.Color(0, 153, 153));
+        loginbtn.setText("Log In");
+        loginbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginbtnMouseClicked(evt);
+            }
+        });
+        jPanel3.add(loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
+
+        pass.setText("jPasswordField1");
+        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 520));
 
@@ -132,12 +133,27 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseClicked
+        Login loginbtn = new Login();
+        loginbtn.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_loginbtnMouseClicked
+
+    private void registerpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseClicked
+        config con = new config();
+    
+        String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?,?,?,?,?)" ;  
+        con.addRecord(sql, fullname.getText(), email.getText(), pass.getText(), "Admin", "Pending");
+        JOptionPane.showMessageDialog(null, "RECORD ADDED!");// TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        
+//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
@@ -168,8 +184,9 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fullname;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -181,10 +198,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField lastname;
+    private javax.swing.JLabel loginbtn;
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JPanel registerpanel;
     // End of variables declaration//GEN-END:variables
 }

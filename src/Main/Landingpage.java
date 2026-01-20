@@ -46,6 +46,10 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +89,7 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Created by: Adrian Jurilla   Email: adrianjurilla27@gmail.com   © 2026 Parcel Tracking System ");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 790, 60));
 
@@ -104,7 +108,7 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1border.png"))); // NOI18N
         jLabel8.setText("Welcome! To ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 360, 500));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 500));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
         jLabel9.setText("Welcome!! To");
@@ -129,6 +133,24 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 19)); // NOI18N
         jLabel14.setText("to delivery.");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 20));
+
+        jPanel6.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel15.setText("Login");
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 110, 30));
+
+        jPanel7.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel16.setText("Register");
+        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 30));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 511));
 
@@ -177,6 +199,8 @@ public class Landingpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -190,5 +214,7 @@ public class Landingpage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }
