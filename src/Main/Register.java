@@ -65,6 +65,7 @@ public class Register extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 520));
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setText("Last name: ");
@@ -81,6 +82,7 @@ public class Register extends javax.swing.JFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         registerpanel.setBackground(new java.awt.Color(204, 204, 0));
+        registerpanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registerpanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
@@ -88,11 +90,11 @@ public class Register extends javax.swing.JFrame {
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel8.setText("Register");
         registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 220, 30));
+        jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 230, 30));
         jPanel3.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
 
         jLabel4.setText("First name: ");
@@ -113,8 +115,6 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel3.add(loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
-
-        pass.setText("jPasswordField1");
         jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 520));
