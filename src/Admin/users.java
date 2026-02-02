@@ -119,7 +119,7 @@ public class users extends javax.swing.JFrame {
         jLabel6.setText("Add");
         addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 120, 40));
+        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 40));
 
         jPanel10.setBackground(new java.awt.Color(153, 153, 0));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -150,7 +150,7 @@ public class users extends javax.swing.JFrame {
 
         jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 120, 40));
 
-        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 120, 40));
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 120, 40));
 
         jPanel12.setBackground(new java.awt.Color(153, 153, 0));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -171,8 +171,14 @@ public class users extends javax.swing.JFrame {
         jLabel9.setText("Delete");
         jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 120, 40));
-        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 340, 40));
+        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 40));
+
+        SearchText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchTextActionPerformed(evt);
+            }
+        });
+        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 340, 40));
 
         jPanel13.setBackground(new java.awt.Color(153, 153, 0));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -193,7 +199,7 @@ public class users extends javax.swing.JFrame {
         jLabel10.setText("Search");
         jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 120, 40));
+        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 980, 80));
 
@@ -437,6 +443,10 @@ public class users extends javax.swing.JFrame {
         displayUser();
     }
     }//GEN-LAST:event_jPanel13MouseClicked
+
+    private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchTextActionPerformed
        
     public void setColor(JPanel p){
         p.setBackground(new Color(153, 153, 0));
