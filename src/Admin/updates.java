@@ -9,18 +9,30 @@ import config.config;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import Admin.users;
 /**
  *
- * @author Dell
+ * @author PC 20
  */
-public class add extends javax.swing.JFrame {
+public class updates extends javax.swing.JFrame {
 
     /**
-     * Creates new form add
+     * Creates new form updates
      */
-    public add() {
+    int userId;
+    public updates(int a_id, String name, String email, String password, String type) {
         initComponents();
+           
+        userId = a_id;
+        
+        Name.setText(name);
+        Email.setText(email);
+        Password.setText(password);
+        Type.setText(type);
+    }
+
+    private updates() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -300,8 +312,8 @@ public class add extends javax.swing.JFrame {
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel16.setText("ADD USER");
-        jPanel15.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        jLabel16.setText("UPDATE");
+        jPanel15.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jPanel8.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 200, 80));
         jPanel8.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 270, -1));
@@ -321,9 +333,7 @@ public class add extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-               
     public void setColor(JPanel p){
         p.setBackground(new Color(153, 153, 0));
     }
@@ -331,18 +341,13 @@ public class add extends javax.swing.JFrame {
     public void resetColor(JPanel p2){
         p2.setBackground(new Color(204, 204, 0));
     }
-    
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        resetColor(jPanel4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseEntered
 
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        resetColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseEntered
-
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        setColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseExited
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        setColor(jPanel4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
         resetColor(jPanel5);        // TODO add your handling code here:
@@ -360,13 +365,17 @@ public class add extends javax.swing.JFrame {
         setColor(jPanel7);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseExited
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        resetColor(jPanel4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        resetColor(jPanel6);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        setColor(jPanel4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+        setColor(jPanel6);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseExited
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+
+    }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
         resetColor(jPanel10);        // TODO add your handling code here:
@@ -392,6 +401,10 @@ public class add extends javax.swing.JFrame {
         setColor(jPanel13);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel13MouseExited
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     private void jPanel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseEntered
         resetColor(jPanel14);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14MouseEntered
@@ -400,6 +413,20 @@ public class add extends javax.swing.JFrame {
         setColor(jPanel14);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14MouseExited
 
+    private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
+        config con = new config();
+
+        String sql = "UPDATE tbl_accounts SET name=?, email=?, password=?, type=? WHERE a_id=?";
+        con.addRecord(sql,
+            Name.getText(),
+            Email.getText(),
+            Password.getText(),
+            Type.getText(),
+            userId
+        );
+        JOptionPane.showMessageDialog(null, "RECORD UPDATED!");
+    }//GEN-LAST:event_jPanel15MouseClicked
+
     private void jPanel15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseEntered
         resetColor(jPanel15);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel15MouseEntered
@@ -407,18 +434,6 @@ public class add extends javax.swing.JFrame {
     private void jPanel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseExited
         setColor(jPanel15);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel15MouseExited
-
-    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-
-    }//GEN-LAST:event_jPanel10MouseClicked
-
-    private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
-        config con = new config();
-        
-        String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?, ?, ?, ?, ?)";
-        con.addRecord(sql, Name.getText(), Email.getText(), Password.getText(), Type.getText(), "Pending");
-        JOptionPane.showMessageDialog(null, "RECORD ADDED!");       // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel15MouseClicked
 
     /**
      * @param args the command line arguments
@@ -437,20 +452,20 @@ public class add extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updates.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updates.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updates.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updates.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new add().setVisible(true);
+                new updates(1, "John", "john@email.com", "1234", "Admin").setVisible(true);
             }
         });
     }

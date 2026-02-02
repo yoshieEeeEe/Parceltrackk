@@ -7,6 +7,7 @@ package Admin;
 
 import config.config;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -21,6 +22,13 @@ public class users extends javax.swing.JFrame {
     public users() {
         initComponents();
         displayUser();
+        
+        this.addWindowFocusListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowGainedFocus(java.awt.event.WindowEvent e) {
+            displayUser();
+        }
+    });
     }
     void displayUser(){
         config cn = new config();
@@ -45,7 +53,7 @@ public class users extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -116,6 +124,9 @@ public class users extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(153, 153, 0));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel10MouseEntered(evt);
             }
@@ -144,6 +155,9 @@ public class users extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(153, 153, 0));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel12MouseEntered(evt);
             }
@@ -158,11 +172,14 @@ public class users extends javax.swing.JFrame {
         jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 120, 40));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 340, 40));
+        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 340, 40));
 
         jPanel13.setBackground(new java.awt.Color(153, 153, 0));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel13MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel13MouseEntered(evt);
             }
@@ -357,6 +374,69 @@ public class users extends javax.swing.JFrame {
           addbtn.setVisible(true);
           dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_addbtnMouseClicked
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+        int row = jTable1.getSelectedRow();
+
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a user to update.");
+        return;
+    }
+
+    int a_id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+    String name = jTable1.getValueAt(row, 1).toString();
+    String email = jTable1.getValueAt(row, 2).toString();
+    String password = jTable1.getValueAt(row, 3).toString();
+    String type = jTable1.getValueAt(row, 4).toString();
+
+    updates up = new updates (a_id, name, email, password, type);
+    up.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_jPanel10MouseClicked
+
+    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
+        int row = jTable1.getSelectedRow();
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Select a user first!");
+        return;
+    } 
+    
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+    
+    if (confirm != JOptionPane.YES_OPTION) return;
+    
+    int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+    
+    config con = new config();
+    String sql = "DELETE FROM tbl_accounts WHERE a_id = ?";
+    
+    con.addRecord(sql, id);
+    
+    JOptionPane.showMessageDialog(this, "User deleted successfully!");
+    displayUser();
+    }//GEN-LAST:event_jPanel12MouseClicked
+
+    private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
+    config conf = new config();
+
+    String keyword = SearchText.getText().trim();
+
+    if (keyword.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a name or email to search.");
+        return;
+    }
+
+    String sql = "SELECT a_id, name, email, password, type, status " +
+                 "FROM tbl_accounts WHERE name LIKE '%" + keyword + "%' " +
+                 "OR email LIKE '%" + keyword + "%'";
+
+    conf.displayData(sql, jTable1);
+
+    if (jTable1.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this, "Doesn't Exist");
+        displayUser();
+    }
+    }//GEN-LAST:event_jPanel13MouseClicked
        
     public void setColor(JPanel p){
         p.setBackground(new Color(153, 153, 0));
@@ -401,6 +481,7 @@ public class users extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField SearchText;
     private javax.swing.JPanel addbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -428,6 +509,5 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,10 @@
  */
 package Main;
 
+import Admin.admindashboard;
+import config.config;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dell
@@ -35,9 +39,9 @@ public class Login extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Pass = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -75,18 +79,18 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Username: ");
         jLabel4.setToolTipText("");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
-        jPanel5.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 310, 40));
+        jPanel5.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 310, 40));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel5.setText("Password: ");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        Pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                PassActionPerformed(evt);
             }
         });
-        jPanel5.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 310, 40));
+        jPanel5.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 310, 40));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
@@ -96,6 +100,11 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
@@ -125,15 +134,29 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_PassActionPerformed
 
     private void registerbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseClicked
           Register registerbtn = new Register ();
           registerbtn.setVisible(true);
           dispose();// TODO add your handling code here:
     }//GEN-LAST:event_registerbtnMouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        config con = new config();
+        String sql = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ? AND status = ?";
+        if (con.authenticate(sql,Email.getText(),Pass.getText(),"Active")){
+        JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+        
+        admindashboard ad = new admindashboard();
+        ad.setVisible(true);
+        dispose();
+        }else{
+                JOptionPane.showMessageDialog(null, "INVALID CREDENTIALS!");
+        };
+    }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -172,6 +195,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Email;
+    private javax.swing.JPasswordField Pass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -185,8 +210,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel registerbtn;
     // End of variables declaration//GEN-END:variables
 }

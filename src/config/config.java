@@ -75,4 +75,24 @@ public void displayData(String sql, javax.swing.JTable table) {
         System.out.println("Error displaying data: " + e.getMessage());
     }
 }
+
+public boolean authenticate(String sql, Object... values) {
+    try (Connection conn = connectDB();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        for (int i = 0; i < values.length; i++) {
+            pstmt.setObject(i + 1, values[i]);
+        }
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return true;
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println("Login Error: " + e.getMessage());
+    }
+    return false;
+}
+
 }
