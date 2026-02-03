@@ -76,7 +76,7 @@ public void displayData(String sql, javax.swing.JTable table) {
     }
 }
 
-public boolean authenticate(String sql, Object... values) {
+public String authenticate(String sql, Object... values) {
     try (Connection conn = connectDB();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -86,13 +86,13 @@ public boolean authenticate(String sql, Object... values) {
 
         try (ResultSet rs = pstmt.executeQuery()) {
             if (rs.next()) {
-                return true;
+                return rs.getString("type");
             }
         }
     } catch (SQLException e) {
         System.out.println("Login Error: " + e.getMessage());
     }
-    return false;
+    return null;
 }
 
 }

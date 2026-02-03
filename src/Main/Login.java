@@ -6,6 +6,7 @@
 package Main;
 
 import Admin.admindashboard;
+import User.userdashboard;
 import config.config;
 import javax.swing.JOptionPane;
 
@@ -145,17 +146,35 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registerbtnMouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        config con = new config();
-        String sql = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ? AND status = ?";
-        if (con.authenticate(sql,Email.getText(),Pass.getText(),"Active")){
-        JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
-        
-        admindashboard ad = new admindashboard();
-        ad.setVisible(true);
-        dispose();
-        }else{
+config con = new config();
+
+        String sql = "SELECT type FROM tbl_accounts WHERE email = ? AND password = ? AND status = ?";
+
+        String userType = con.authenticate(
+        sql,
+        Email.getText(),
+        Pass.getText(),
+        "Active"
+        );
+            if (userType != null) {
+                JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+
+                if (userType.equalsIgnoreCase("Admin")) {
+                    new admindashboard().setVisible(true);
+
+                } else if (userType.equalsIgnoreCase("User")) {
+                    new userdashboard().setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "UNKNOWN USER ROLE!");
+                    return;
+                }
+
+                dispose();
+            } else {
                 JOptionPane.showMessageDialog(null, "INVALID CREDENTIALS!");
-        };
+            }
+
     }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
