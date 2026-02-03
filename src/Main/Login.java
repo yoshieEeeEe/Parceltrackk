@@ -9,7 +9,7 @@ import Admin.admindashboard;
 import User.userdashboard;
 import config.config;
 import javax.swing.JOptionPane;
-
+import config.Session;
 /**
  *
  * @author Dell
@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel5.add(registerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 430, 540));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 430, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -146,35 +146,66 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registerbtnMouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-config con = new config();
+             String email = Email.getText();
+String password = Pass.getText();
 
-        String sql = "SELECT type FROM tbl_accounts WHERE email = ? AND password = ? AND status = ?";
+if (email.equals("") || password.equals("")) {
+    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+    return;
+}
 
-        String userType = con.authenticate(
-        sql,
-        Email.getText(),
-        Pass.getText(),
-        "Active"
-        );
-            if (userType != null) {
-                JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+String sql = "SELECT a_id, name, email, status, type FROM tbl_accounts WHERE email = ? AND password = ?";
 
-                if (userType.equalsIgnoreCase("Admin")) {
-                    new admindashboard().setVisible(true);
+String status = null;
+String userType = null;
 
-                } else if (userType.equalsIgnoreCase("User")) {
-                    new userdashboard().setVisible(true);
+try (
+    java.sql.Connection conn = config.connectDB();
+    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+) {
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "UNKNOWN USER ROLE!");
-                    return;
-                }
+    pst.setString(1, email);
+    pst.setString(2, password);
 
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "INVALID CREDENTIALS!");
-            }
+    java.sql.ResultSet rs = pst.executeQuery();
 
+    if (!rs.next()) {
+        JOptionPane.showMessageDialog(null, "Invalid email or password!");
+        return;
+    }
+
+    status = rs.getString("status");
+    userType = rs.getString("type");
+        Session sess = new Session();
+        sess.setSession(
+        rs.getInt("a_id"),
+        rs.getString("name"),
+        rs.getString("email"),
+        userType
+    );
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+    return;
+}
+
+if (!status.equalsIgnoreCase("Active")) {
+    JOptionPane.showMessageDialog(
+        null,
+        "Your account is inactive. Please contact the administrator."
+    );
+    return;
+}
+
+JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+
+if (userType.equalsIgnoreCase("Admin")) {
+    new admindashboard().setVisible(true);
+} else if (userType.equalsIgnoreCase("User")) {
+    new userdashboard().setVisible(true);
+}
+
+dispose();
     }//GEN-LAST:event_jPanel3MouseClicked
 
     /**

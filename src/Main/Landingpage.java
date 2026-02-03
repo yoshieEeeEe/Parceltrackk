@@ -173,7 +173,7 @@ public class Landingpage extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel16.setText("Register");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, -1));
+        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 120, 40));
 

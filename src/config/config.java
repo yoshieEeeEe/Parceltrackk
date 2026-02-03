@@ -95,4 +95,10 @@ public String authenticate(String sql, Object... values) {
     return null;
 }
 
+    public static class Session {
+
+        public Session() {
+        }
+    }
+
 }
