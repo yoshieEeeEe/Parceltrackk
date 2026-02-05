@@ -101,24 +101,30 @@ public class profile extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jLabel4.setText("Name:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 40, 10));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 10));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jLabel5.setText("User Status:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 70, 10));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, 10));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel1.setText("ACCOUNT SETTINGS");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 30));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jLabel10.setText("Email:");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 40, -1));
-        jPanel4.add(Namelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 140, 10));
-        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 130, 10));
-        jPanel4.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 120, 10));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, -1));
+
+        Namelbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Namelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 140, 10));
+
+        Emaillbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 130, 10));
+
+        Typelbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 120, 10));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 430, 160));
 

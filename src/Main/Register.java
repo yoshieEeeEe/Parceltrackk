@@ -6,6 +6,7 @@
 package Main;
 
 import config.config;
+import Main.Login;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,18 +37,18 @@ public class Register extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        lastname = new javax.swing.JTextField();
+        Email = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
+        Type = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         registerpanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        fullname = new javax.swing.JTextField();
+        Name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         loginbtn = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
+        Pass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,15 +69,26 @@ public class Register extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setText("Last name: ");
+        jLabel5.setText("Email:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-        jPanel3.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 270, -1));
 
-        jLabel6.setText("Email: ");
+        Email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 270, -1));
+
+        jLabel6.setText("Type:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
-        email.setText(" ");
-        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
+        Type.setText(" ");
+        Type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
 
         jLabel7.setText("Password:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
@@ -95,9 +107,9 @@ public class Register extends javax.swing.JFrame {
         registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
         jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 230, 30));
-        jPanel3.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
+        jPanel3.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
 
-        jLabel4.setText("First name: ");
+        jLabel4.setText("Name:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 44)); // NOI18N
@@ -115,7 +127,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel3.add(loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
-        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
+        jPanel3.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 520));
 
@@ -141,12 +153,60 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_loginbtnMouseClicked
 
     private void registerpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseClicked
-        config con = new config();
-    
-        String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?,?,?,?,?)" ;  
-        con.addRecord(sql, fullname.getText(), email.getText(), pass.getText(), "Admin", "Pending");
-        JOptionPane.showMessageDialog(null, "RECORD ADDED!");// TODO add your handling code here:
+                 config con = new config();
+
+                String name = Name.getText();
+                String email = Email.getText();
+                String password = Pass.getText();
+                String type = Type.getText();
+
+              
+                if (name.equals("") || email.equals("") || password.equals("") || type.equals("")) {
+                    JOptionPane.showMessageDialog(
+                          null, 
+                          "Please fill in all fields!", 
+                          "Validation Error", 
+                          JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if (!type.equalsIgnoreCase("Admin") && !type.equalsIgnoreCase("User")) {
+                    JOptionPane.showMessageDialog(
+                            null, 
+                           "Invalid Credentials! Type must be 'Admin' or 'User'.", 
+                           "Error", 
+                           JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?,?,?,?,?)";
+
+
+                con.addRecord(
+                    sql, 
+                    name, 
+                    email, 
+                    password, 
+                    type,     
+                    "Pending"
+                );
+
+                JOptionPane.showMessageDialog(null, "RECORD ADDED!");
+
+
+                Name.setText("");
+                Email.setText("");
+                Pass.setText("");
+                Type.setText("");
     }//GEN-LAST:event_registerpanelMouseClicked
+
+    private void TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TypeActionPerformed
+
+    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +245,10 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField fullname;
+    private javax.swing.JTextField Email;
+    private javax.swing.JTextField Name;
+    private javax.swing.JPasswordField Pass;
+    private javax.swing.JTextField Type;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -199,9 +261,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField lastname;
     private javax.swing.JLabel loginbtn;
-    private javax.swing.JPasswordField pass;
     private javax.swing.JPanel registerpanel;
     // End of variables declaration//GEN-END:variables
 }
