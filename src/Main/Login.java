@@ -6,7 +6,7 @@
 package Main;
 
 import Admin.admindashboard;
-import User.userdashboard;
+import Admin.userdashboard;
 import config.config;
 import javax.swing.JOptionPane;
 import config.Session;
