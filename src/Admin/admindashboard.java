@@ -6,7 +6,9 @@
 package Admin;
 
 import Main.Landingpage;
+import Main.Login;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +21,14 @@ public class admindashboard extends javax.swing.JFrame {
      * Creates new form admindashboard
      */
     public admindashboard() {
+        
+        if (config.Session.getUserId() == 0) 
+        {
+        JOptionPane.showMessageDialog(null, "Login Required!");
+        new Login().setVisible(true);
+        dispose();
+        return;
+        }
         initComponents();
     }
 
@@ -54,21 +64,22 @@ public class admindashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel5.setBackground(new java.awt.Color(0, 102, 153));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("ADMIN DASHBOARD");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 510, 70));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 140));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Home.setBackground(new java.awt.Color(153, 153, 0));
+        Home.setBackground(new java.awt.Color(96, 165, 250));
         Home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,7 +100,7 @@ public class admindashboard extends javax.swing.JFrame {
 
         jPanel2.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 260, 70));
 
-        Transactions.setBackground(new java.awt.Color(153, 153, 0));
+        Transactions.setBackground(new java.awt.Color(96, 165, 250));
         Transactions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Transactions.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,7 +121,7 @@ public class admindashboard extends javax.swing.JFrame {
 
         jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 260, 70));
 
-        jPanel7.setBackground(new java.awt.Color(153, 153, 0));
+        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -128,7 +139,7 @@ public class admindashboard extends javax.swing.JFrame {
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 70));
 
-        Users.setBackground(new java.awt.Color(153, 153, 0));
+        Users.setBackground(new java.awt.Color(96, 165, 250));
         Users.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,7 +160,7 @@ public class admindashboard extends javax.swing.JFrame {
 
         jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 260, 70));
 
-        Home1.setBackground(new java.awt.Color(153, 153, 0));
+        Home1.setBackground(new java.awt.Color(96, 165, 250));
         Home1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Home1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -172,12 +183,12 @@ public class admindashboard extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 470));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo (2).png"))); // NOI18N
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 290, 180));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 180));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 90, 820, 390));
@@ -189,11 +200,11 @@ public class admindashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
         public void setColor(JPanel p){
-        p.setBackground(new Color(153, 153, 0));
+        p.setBackground(new Color(96,165,250));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(204, 204, 0));
+        p2.setBackground(new Color(0,102,153));
     }
     
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked

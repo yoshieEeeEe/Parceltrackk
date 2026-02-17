@@ -10,7 +10,7 @@ package config;
  * @author USER23
  */
 public class Session {
-
+  
     private static int a_id;
     private static String name;
     private static String email;
@@ -45,4 +45,5 @@ public class Session {
         email = null;
         type = null;
     }
+    
 }

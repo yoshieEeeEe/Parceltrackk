@@ -6,10 +6,12 @@
 package Main;
 
 import Admin.admindashboard;
-import Admin.userdashboard;
+import User.userdashboard;
 import config.config;
 import javax.swing.JOptionPane;
 import config.Session;
+import java.awt.Color;
+import javax.swing.JPanel;
 /**
  *
  * @author Dell
@@ -34,19 +36,18 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Pass = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        Login = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         registerbtn = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,31 +57,23 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo (2).png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 240, 174));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/border2.png"))); // NOI18N
-        jLabel2.setToolTipText("");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 370, 570));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 359, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 50)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 0));
-        jLabel3.setText("Log In");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 190, 89));
-
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel5.setForeground(new java.awt.Color(204, 204, 204));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setBackground(new java.awt.Color(204, 204, 204));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Username: ");
         jLabel4.setToolTipText("");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
         jPanel5.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 310, 40));
 
+        jLabel5.setBackground(new java.awt.Color(204, 204, 204));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Password: ");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
@@ -92,47 +85,69 @@ public class Login extends javax.swing.JFrame {
         jPanel5.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 310, 40));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setForeground(new java.awt.Color(102, 0, 0));
         jLabel9.setText("Forgot Password?");
         jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, 20));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 0));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        Login.setBackground(new java.awt.Color(96, 165, 250));
+        Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Login.setForeground(new java.awt.Color(255, 255, 255));
+        Login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
+                LoginMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LoginMouseExited(evt);
             }
         });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel6.setText("Log In");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 30));
+        Login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 30));
 
-        jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 240, 30));
+        jPanel5.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 240, 50));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Not Registered Yet?");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
 
         registerbtn.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        registerbtn.setForeground(new java.awt.Color(0, 102, 51));
+        registerbtn.setForeground(new java.awt.Color(51, 255, 51));
         registerbtn.setText("Register Now!");
         registerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerbtnMouseClicked(evt);
             }
         });
-        jPanel5.add(registerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, -1));
+        jPanel5.add(registerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 430, 550));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 90));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 50)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Log In");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 140, 80));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 550));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+                public void setColor(JPanel p){
+        p.setBackground(new Color(96,165,250));
+    }
+    
+    public void resetColor(JPanel p2){
+        p2.setBackground(new Color(0,102,153));
+    }
     private void PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
@@ -143,69 +158,73 @@ public class Login extends javax.swing.JFrame {
           dispose();// TODO add your handling code here:
     }//GEN-LAST:event_registerbtnMouseClicked
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-             String email = Email.getText();
-String password = Pass.getText();
+    private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
+                String email = Email.getText();
+                String password = Pass.getText();
 
-if (email.equals("") || password.equals("")) {
-    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
-    return;
-}
+                if (email.equals("") || password.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+                    return;
+                }
 
-String sql = "SELECT a_id, name, email, status, type FROM tbl_accounts WHERE email = ? AND password = ?";
+                String sql = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ?";
 
-String status = null;
-String userType = null;
+                try (
+                    java.sql.Connection conn = config.connectDB();
+                    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                ) {
 
-try (
-    java.sql.Connection conn = config.connectDB();
-    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-) {
+                    pst.setString(1, email);
+                    pst.setString(2, password);
 
-    pst.setString(1, email);
-    pst.setString(2, password);
+                    java.sql.ResultSet rs = pst.executeQuery();
 
-    java.sql.ResultSet rs = pst.executeQuery();
+                    if (!rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Invalid email or password!");
+                        return;
+                    }
 
-    if (!rs.next()) {
-        JOptionPane.showMessageDialog(null, "Invalid email or password!");
-        return;
-    }
+                    if (!rs.getString("status").equalsIgnoreCase("Active")) {
+                        JOptionPane.showMessageDialog(
+                            null,
+                            "Your account is inactive. Please contact the administrator."
+                        );
+                        return;
+                    }
 
-    status = rs.getString("status");
-    userType = rs.getString("type");
-        Session sess = new Session();
-        sess.setSession(
-        rs.getInt("a_id"),
-        rs.getString("name"),
-        rs.getString("email"),
-        userType
-    );
+                    Session sess = new Session();
+                    sess.setSession(
+                        rs.getInt("a_id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("type")
+                    );
 
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
-    return;
-}
+                    JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
 
-if (!status.equalsIgnoreCase("Active")) {
-    JOptionPane.showMessageDialog(
-        null,
-        "Your account is inactive. Please contact the administrator."
-    );
-    return;
-}
+                    String userType = rs.getString("type");
 
-JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+                    if (userType.equalsIgnoreCase("Admin")) {
+                        new admindashboard().setVisible(true);
+                    } else if (userType.equalsIgnoreCase("User")) {
+                        new userdashboard().setVisible(true);
+                    }
 
-if (userType.equalsIgnoreCase("Admin")) {
-    new admindashboard().setVisible(true);
-} else if (userType.equalsIgnoreCase("User")) {
-    new userdashboard().setVisible(true);
-}
+                    dispose();
 
-dispose();
-    }//GEN-LAST:event_jPanel3MouseClicked
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+    }//GEN-LAST:event_LoginMouseClicked
+        }
+    private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
+        resetColor(Login);        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginMouseEntered
 
+    private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
+        setColor(Login);        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginMouseExited
+
+    
     /**
      * @param args the command line arguments
      */
@@ -244,9 +263,9 @@ dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Email;
+    private javax.swing.JPanel Login;
     private javax.swing.JPasswordField Pass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -255,7 +274,6 @@ dispose();
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel registerbtn;
     // End of variables declaration//GEN-END:variables
