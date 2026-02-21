@@ -67,7 +67,7 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        Send = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -220,23 +220,26 @@ public class userdashboard extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 670, 400));
 
-        jPanel4.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        Send.setBackground(new java.awt.Color(96, 165, 250));
+        Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SendMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                SendMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                SendMouseExited(evt);
             }
         });
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
         jLabel2.setText("SEND PARCELS");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 90));
+        jPanel8.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 90));
 
         jPanel5.setBackground(new java.awt.Color(96, 165, 250));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -272,7 +275,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel4.setText("USERS");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 100));
+        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 90));
 
         jPanel7.setBackground(new java.awt.Color(96, 165, 250));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -287,8 +290,8 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
-        jLabel5.setText("Wo");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, 30));
+        jLabel5.setText("TRACK PARCELS");
+        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 30));
 
         jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
 
@@ -419,13 +422,13 @@ public class userdashboard extends javax.swing.JFrame {
         setColor(jPanel13);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel13MouseExited
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        resetColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
+        resetColor(Send);
+    }//GEN-LAST:event_SendMouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        setColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void SendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseExited
+        setColor(Send);
+    }//GEN-LAST:event_SendMouseExited
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
         resetColor(jPanel5);
@@ -450,6 +453,13 @@ public class userdashboard extends javax.swing.JFrame {
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
         setColor(jPanel7);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseExited
+
+    private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
+            
+        SendParcel Send = new SendParcel();
+        Send.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_SendMouseClicked
 
     /**
      * @param args the command line arguments
@@ -488,6 +498,7 @@ public class userdashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SearchText;
+    private javax.swing.JPanel Send;
     private javax.swing.JPanel addbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -507,7 +518,6 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
