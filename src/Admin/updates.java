@@ -475,7 +475,7 @@ public class updates extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updates(1, "John", "john@email.com", "1234", "Admin").setVisible(true);
+                new updates().setVisible(true);
             }
         });
     }

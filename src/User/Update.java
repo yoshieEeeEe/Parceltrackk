@@ -5,31 +5,32 @@
  */
 package User;
 
-import Admin.users;
-import Main.Login;
 import config.Session;
 import config.config;
-import java.awt.Color;
+import javafx.animation.Animation.Status;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
  * @author Dell
  */
-public class SendParcel extends javax.swing.JFrame {
+public class Update extends javax.swing.JFrame {
 
     /**
-     * Creates new form SendParcel
+     * Creates new form Update
      */
-    public SendParcel() {
-           if (Session.getUserId() == 0) { 
-        JOptionPane.showMessageDialog(null, "Login Required!");
-        new Login().setVisible(true);
-        this.dispose();
-        return; 
-    }
+    
+    int parcelId;
+    public Update(int p_id, int a_id, String type, String weight, String sender, String receiver, String status) {
         initComponents();
+        
+        parcelId = p_id;
+        
+        Type.getText();   
+        Weight.getText();
+        Sender.getText(); 
+        Receiver.getText(); 
+
     }
 
     /**
@@ -58,7 +59,7 @@ public class SendParcel extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        Send = new javax.swing.JTextField();
+        Type = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,8 +105,8 @@ public class SendParcel extends javax.swing.JFrame {
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setText("ADD PARCEL");
-        registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel8.setText("UPDATE");
+        registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 140, 40));
         jPanel3.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 270, -1));
@@ -141,7 +142,7 @@ public class SendParcel extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("ParcelType:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
-        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 270, -1));
+        jPanel3.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 270, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 520));
 
@@ -159,13 +160,7 @@ public class SendParcel extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-         public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
-    }
-    
-    public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
-    }
+
     private void WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_WeightActionPerformed
@@ -175,43 +170,24 @@ public class SendParcel extends javax.swing.JFrame {
     }//GEN-LAST:event_SenderActionPerformed
 
     private void registerpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseClicked
-        config con = new config();
+    config con = new config();
 
-        int currentAccountId = Session.getUserId(); 
-        
-        String name = Name.getText().trim();
-        String type = Send.getText().trim();
-        String weight = Weight.getText().trim();
-        String sender = Sender.getText().trim();
-        String receiver = Receiver.getText().trim();
-        String status = "Pending";
+    String sql = "UPDATE tbl_parcel SET p_name=?, p_type=?, p_weight=?, sender_address=?, receiver_address=?, p_status=? WHERE p_id=?";
 
-        if (name.isEmpty() ||  type.isEmpty() || weight.isEmpty() || sender.isEmpty() || receiver.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill in all fields!", "Validation Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+    con.addRecord(sql,
+        Name.getText(),     
+        Type.getText(),   
+        Weight.getText(),  
+        Sender.getText(),  
+        Receiver.getText(),  
+        "Pending",         
+        parcelId          
+    );
 
-        try {
-            Double.parseDouble(weight);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Weight must be a valid number!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-
-        String sql = "INSERT INTO tbl_parcel (a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status) VALUES (?,?,?,?,?,?,?)";
-
-        con.addRecord(sql, currentAccountId, name, type, weight, sender, receiver, status);
-
-        JOptionPane.showMessageDialog(null, "PARCEL RECORDED SUCCESSFULLY!");
-
-        Name.setText("");
-        Send.setText("");
-        Weight.setText("");
-        Sender.setText("");
-        Receiver.setText("");
-
-
+    JOptionPane.showMessageDialog(null, "RECORD UPDATED!");
+    userdashboard usd = new userdashboard();
+    usd.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_registerpanelMouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
@@ -237,20 +213,20 @@ public class SendParcel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SendParcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Update.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SendParcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Update.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SendParcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Update.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SendParcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Update.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SendParcel().setVisible(true);
+                new Update(0, 0, "", "", "", "", "").setVisible(true);
             }
         });
     }
@@ -258,8 +234,8 @@ public class SendParcel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Receiver;
-    private javax.swing.JTextField Send;
     private javax.swing.JTextField Sender;
+    private javax.swing.JTextField Type;
     private javax.swing.JTextField Weight;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

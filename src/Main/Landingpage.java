@@ -39,7 +39,7 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        Loginbtn = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -48,7 +48,7 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        registerbtn = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -97,23 +97,26 @@ public class Landingpage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 790, 60));
 
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        Loginbtn.setBackground(new java.awt.Color(96, 165, 250));
+        Loginbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Loginbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginbtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
+                LoginbtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
+                LoginbtnMouseExited(evt);
             }
         });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Loginbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel15.setText("Login");
-        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, -1));
+        Loginbtn.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 130, 50));
+        jPanel1.add(Loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 130, 50));
 
         jPanel8.setBackground(new java.awt.Color(102, 204, 255));
         jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
@@ -145,23 +148,26 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel14.setText("to delivery.");
         jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 20));
 
-        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        registerbtn.setBackground(new java.awt.Color(96, 165, 250));
+        registerbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerbtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                registerbtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                registerbtnMouseExited(evt);
             }
         });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        registerbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel16.setText("Register");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
+        registerbtn.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 130, 50));
+        jPanel8.add(registerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 130, 50));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
         jLabel7.setToolTipText("");
@@ -181,21 +187,33 @@ public class Landingpage extends javax.swing.JFrame {
     public void resetColor(JPanel p2){
         p2.setBackground(new Color(0,102,153));
     }
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-       resetColor(jPanel6); // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseEntered
+    private void LoginbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseEntered
+       resetColor(Loginbtn); // TODO add your handling code here:
+    }//GEN-LAST:event_LoginbtnMouseEntered
 
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        setColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseExited
+    private void LoginbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseExited
+        setColor(Loginbtn);        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginbtnMouseExited
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        resetColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseEntered
+    private void registerbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseEntered
+        resetColor(registerbtn);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerbtnMouseEntered
 
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        setColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseExited
+    private void registerbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseExited
+        setColor(registerbtn);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerbtnMouseExited
+
+    private void registerbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseClicked
+          Register registerbtn = new Register ();
+          registerbtn.setVisible(true);
+          dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_registerbtnMouseClicked
+
+    private void LoginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseClicked
+        Login loginbtn = new Login();
+        loginbtn.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginbtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -233,6 +251,7 @@ public class Landingpage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Loginbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -251,8 +270,7 @@ public class Landingpage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel registerbtn;
     // End of variables declaration//GEN-END:variables
 }
