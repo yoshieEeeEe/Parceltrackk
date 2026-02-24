@@ -293,8 +293,8 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
-        jLabel5.setText("TRACK PARCELS");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 30));
+        jLabel5.setText("SELECT RIDER");
+        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 30));
 
         jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
 
@@ -322,7 +322,7 @@ public class userdashboard extends javax.swing.JFrame {
         p2.setBackground(new Color(0,102,153));
     }
     private void addbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseClicked
-        add addbtn = new add ();
+        addparcel addbtn = new addparcel ();
         addbtn.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_addbtnMouseClicked

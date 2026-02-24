@@ -154,7 +154,7 @@ public class riderdashboard extends javax.swing.JFrame {
         jLabel2.setText("UPDATE PARCEL");
         Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 200, 60));
+        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 190, 60));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 980, 80));
 
@@ -191,6 +191,7 @@ public class riderdashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
          public void setColor(JPanel p){
         p.setBackground(new Color(96,165,250));
@@ -237,27 +238,37 @@ public class riderdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel13MouseExited
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
+   
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a parcel to update.");
+            return;
+        }
 
-    int selectedRow = table.getSelectedRow();
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Please select a parcel to update.");
-        return;
-    }
+        String parcelId = table.getValueAt(selectedRow, 0).toString();
+        String currentStatus = table.getValueAt(selectedRow, 6).toString();
+        String nextStatus = "";
 
-    String parcelId = table.getValueAt(selectedRow, 0).toString();
-    String currentStatus = table.getValueAt(selectedRow, 6).toString();
-    
 
-    String nextStatus = currentStatus.equalsIgnoreCase("On going") ? "Delivered" : "On going";
+        if (currentStatus.equalsIgnoreCase("Delivered")) {
 
-    config conf = new config();
-    String sql = "UPDATE tbl_parcel SET p_status = ? WHERE p_id = ?";
-    
-    conf.addRecord(sql, nextStatus, parcelId);
-    
-    JOptionPane.showMessageDialog(this, "Parcel ID: " + parcelId + " updated to " + nextStatus);
-    displayParcels(); 
-    
+            JOptionPane.showMessageDialog(this, "Parcel ID: " + parcelId + " is already Delivered and cannot be changed.");
+            return; 
+
+        } else if (currentStatus.equalsIgnoreCase("On going")) {
+            nextStatus = "Delivered";
+
+        } else {
+            nextStatus = "On going";
+        }
+
+        config conf = new config();
+        String sql = "UPDATE tbl_parcel SET p_status = ? WHERE p_id = ?";
+        conf.addRecord(sql, nextStatus, parcelId);
+        
+        JOptionPane.showMessageDialog(this, "Status updated to: " + nextStatus);
+        displayParcels();
+
     }//GEN-LAST:event_SendMouseClicked
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
