@@ -448,10 +448,28 @@ public class add extends javax.swing.JFrame {
 
     private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
         config con = new config();
-        
-        String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?, ?, ?, ?, ?)";
-        con.addRecord(sql, Name.getText(), Email.getText(), Password.getText(), Type.getText(), "Pending");
-        JOptionPane.showMessageDialog(null, "RECORD ADDED!");       // TODO add your handling code here:
+
+
+        String name = Name.getText().trim();
+        String email = Email.getText().trim();
+        String pass = Password.getText().trim();
+        String type = Type.getText().trim();
+
+        if (name.isEmpty() || email.isEmpty() || pass.isEmpty() || type.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields are required! Please fill them up.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?, ?, ?, ?, ?)";
+            con.addRecord(sql, name, email, pass, type, "Pending");
+
+            JOptionPane.showMessageDialog(null, "RECORD ADDED!");
+
+
+            Name.setText("");
+            Email.setText("");
+            Password.setText("");
+            Type.setText("");
+}     // TODO add your handling code here:
     }//GEN-LAST:event_jPanel15MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked

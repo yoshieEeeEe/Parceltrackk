@@ -67,7 +67,7 @@ public class users extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        Home = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -231,23 +231,26 @@ public class users extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 670, 400));
 
-        jPanel4.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        Home.setBackground(new java.awt.Color(96, 165, 250));
+        Home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                HomeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                HomeMouseExited(evt);
             }
         });
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel2.setText("HOME");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 220, 90));
+        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 220, 90));
 
         jPanel5.setBackground(new java.awt.Color(96, 165, 250));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -326,13 +329,13 @@ public class users extends javax.swing.JFrame {
     public void resetColor(JPanel p2){
         p2.setBackground(new Color(0,102,153));
     }
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-       resetColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseEntered
+       resetColor(Home);
+    }//GEN-LAST:event_HomeMouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-       setColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
+       setColor(Home);
+    }//GEN-LAST:event_HomeMouseExited
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
         resetColor(jPanel5);
@@ -462,6 +465,13 @@ public class users extends javax.swing.JFrame {
     private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTextActionPerformed
+
+    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+                
+        admindashboard Home = new admindashboard();
+        Home.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_HomeMouseClicked
        
     /**
      * @param args the command line arguments
@@ -499,6 +509,7 @@ public class users extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Home;
     private javax.swing.JTextField SearchText;
     private javax.swing.JPanel addbtn;
     private javax.swing.JLabel jLabel1;
@@ -520,7 +531,6 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

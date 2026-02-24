@@ -117,7 +117,7 @@ public class Update extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 44)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Send Parcel");
+        jLabel3.setText("UPDATE");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
@@ -137,7 +137,7 @@ public class Update extends javax.swing.JFrame {
         jLabel2.setText("BACK");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 120, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 110, 40));
 
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("ParcelType:");

@@ -114,10 +114,10 @@ public class userdashboard extends javax.swing.JFrame {
         addbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel6.setText("Add");
-        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+        jLabel6.setText("ADD");
+        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 40));
+        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, 40));
 
         updates.setBackground(new java.awt.Color(96, 165, 250));
         updates.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -135,7 +135,7 @@ public class userdashboard extends javax.swing.JFrame {
         updates.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel7.setText("Update");
+        jLabel7.setText("UPATE");
         updates.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(153, 153, 0));
@@ -148,7 +148,7 @@ public class userdashboard extends javax.swing.JFrame {
 
         updates.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 120, 40));
 
-        jPanel3.add(updates, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 120, 40));
+        jPanel3.add(updates, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 130, 40));
 
         jPanel12.setBackground(new java.awt.Color(96, 165, 250));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -166,8 +166,8 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel9.setText("Delete");
-        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jLabel9.setText("DELETE");
+        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 40));
 
@@ -194,8 +194,8 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel10.setText("Search");
-        jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jLabel10.setText("SEARCH");
+        jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 40));
 
@@ -218,7 +218,7 @@ public class userdashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 670, 400));
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 680, 380));
 
         Send.setBackground(new java.awt.Color(96, 165, 250));
         Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -262,6 +262,9 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -272,8 +275,8 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
-        jLabel4.setText("USERS");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        jLabel4.setText("PROFILE");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 90));
 
@@ -468,6 +471,12 @@ public class userdashboard extends javax.swing.JFrame {
         Send.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_SendMouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        Admin.profile Home1 =  new Admin.profile ();
+        Home1.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
 
     /**
      * @param args the command line arguments

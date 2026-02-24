@@ -6,6 +6,7 @@
 package Admin;
 
 import Main.Login;
+import User.Update;
 import config.Session;
 import config.config;
 import java.awt.Color;
@@ -84,8 +85,8 @@ public class records extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("USERS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, 60));
+        jLabel1.setText("TRANSACTIONS");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
@@ -257,6 +258,9 @@ public class records extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -267,7 +271,7 @@ public class records extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel4.setText("USERS");
+        jLabel4.setText("BACK");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 100));
@@ -314,7 +318,7 @@ public class records extends javax.swing.JFrame {
         p2.setBackground(new Color(0,102,153));
     }
     private void addbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseClicked
-        add addbtn = new add ();
+        addparcel addbtn = new addparcel ();
         addbtn.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_addbtnMouseClicked
@@ -328,22 +332,25 @@ public class records extends javax.swing.JFrame {
     }//GEN-LAST:event_addbtnMouseExited
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-        int row = table.getSelectedRow();
+    int row = table.getSelectedRow();
+    if (row != -1) {
 
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a user to update.");
-            return;
-        }
+        int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
+        int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
+        String type = table.getValueAt(row, 2).toString();
+        String weight = table.getValueAt(row, 3).toString();
+        String sender = table.getValueAt(row, 4).toString();
+        String receiver = table.getValueAt(row, 5).toString();
+        String status = table.getValueAt(row, 6).toString();
 
-        int a_id = Integer.parseInt(table.getValueAt(row, 0).toString());
-        String name = table.getValueAt(row, 1).toString();
-        String email = table.getValueAt(row, 2).toString();
-        String password = table.getValueAt(row, 3).toString();
-        String type = table.getValueAt(row, 4).toString();
 
-        updates up = new updates (a_id, name, email, password, type);
+        Update up = new Update(p_id, a_id, type, weight, sender, receiver, status);
         up.setVisible(true);
-        dispose();
+        this.dispose();
+
+    } else {
+        JOptionPane.showMessageDialog(null, "Please select a parcel from the table first!", "No Selection", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
@@ -361,18 +368,18 @@ public class records extends javax.swing.JFrame {
             return;
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this parcel?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
 
         if (confirm != JOptionPane.YES_OPTION) return;
 
         int id = Integer.parseInt(table.getValueAt(row, 0).toString());
 
         config con = new config();
-        String sql = "DELETE FROM tbl_accounts WHERE a_id = ?";
+        String sql = "DELETE FROM tbl_parcel WHERE p_id = ?";
 
         con.addRecord(sql, id);
 
-        JOptionPane.showMessageDialog(this, "User deleted successfully!");
+        JOptionPane.showMessageDialog(this, "Parcel deleted successfully!");
         displayParcels();
     }//GEN-LAST:event_jPanel12MouseClicked
 
@@ -390,22 +397,25 @@ public class records extends javax.swing.JFrame {
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
         config conf = new config();
-
         String keyword = SearchText.getText().trim();
 
         if (keyword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a name or email to search.");
+            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+
+            displayParcels(); 
             return;
         }
 
-        String sql = "SELECT a_id, name, email, password, type, status " +
-        "FROM tbl_accounts WHERE name LIKE '%" + keyword + "%' " +
-        "OR email LIKE '%" + keyword + "%'";
+        String sql = "SELECT p_id, a_id, p_type, p_weight, sender_address, receiver_address, p_status " +
+                     "FROM tbl_parcel WHERE p_type LIKE '%" + keyword + "%' " +
+                     "OR p_name LIKE '%" + keyword + "%' " +
+                     "OR p_id LIKE '%" + keyword + "%'";
 
         conf.displayData(sql, table);
 
+     
         if (table.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Doesn't Exist");
+            JOptionPane.showMessageDialog(this, "No matching records found.");
             displayParcels();
         }
     }//GEN-LAST:event_jPanel13MouseClicked
@@ -449,6 +459,12 @@ public class records extends javax.swing.JFrame {
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
         setColor(jPanel7);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseExited
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        admindashboard Back = new admindashboard();
+        Back.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
 
     /**
      * @param args the command line arguments

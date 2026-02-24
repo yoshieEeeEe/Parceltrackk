@@ -24,12 +24,13 @@ public class updates extends javax.swing.JFrame {
     int userId;
     public updates(int a_id, String name, String email, String password, String type) {
         
-        if (Session.getUserId() == 0) { 
+        if (Session.getUserId() == 0) 
+        {
         JOptionPane.showMessageDialog(null, "Login Required!");
         new Login().setVisible(true);
-        this.dispose();
-        return; 
-    }
+        dispose();
+        return;
+        }
         initComponents();
            
         userId = a_id;
@@ -40,9 +41,7 @@ public class updates extends javax.swing.JFrame {
         Type.setText(type);
     }
 
-    private updates() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +88,8 @@ public class updates extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Type = new javax.swing.JTextField();
         Password = new javax.swing.JPasswordField();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -329,6 +330,27 @@ public class updates extends javax.swing.JFrame {
         jPanel8.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 270, -1));
         jPanel8.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 270, -1));
 
+        jPanel16.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel16MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel16MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel16MouseExited(evt);
+            }
+        });
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel17.setText("Back");
+        jPanel16.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
+
+        jPanel8.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 100, 40));
+
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 620, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -343,6 +365,7 @@ public class updates extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         public void setColor(JPanel p){
         p.setBackground(new Color(96,165,250));
@@ -445,6 +468,20 @@ public class updates extends javax.swing.JFrame {
         setColor(jPanel15);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel15MouseExited
 
+    private void jPanel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MouseClicked
+        users Back = new users();
+        Back.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel16MouseClicked
+
+    private void jPanel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel16MouseEntered
+
+    private void jPanel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel16MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -475,7 +512,7 @@ public class updates extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updates().setVisible(true);
+                
             }
         });
     }
@@ -493,6 +530,7 @@ public class updates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -508,6 +546,7 @@ public class updates extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

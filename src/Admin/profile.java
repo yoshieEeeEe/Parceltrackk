@@ -6,6 +6,7 @@
 package Admin;
 
 import Main.Login;
+import User.userdashboard;
 import config.Session;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -76,6 +77,8 @@ public class profile extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
 
         Home.setBackground(new java.awt.Color(153, 153, 0));
         Home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -216,6 +219,21 @@ public class profile extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 770, 420));
 
+        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+        });
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel16.setText("BACK");
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 70, 40));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 870, 420));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -243,11 +261,31 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeMouseExited
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
-            config.Session.clearSession();
+        config.Session.clearSession();
         JOptionPane.showMessageDialog(null, "Logged out successfully!");
         new Login().setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+
+    String userType = config.Session.getType();
+
+
+    if (userType == null) {
+ 
+        new Main.Login().setVisible(true);
+    } else if (userType.equalsIgnoreCase("Admin")) {
+        new admindashboard().setVisible(true);
+    } else if (userType.equalsIgnoreCase("Rider")) {
+        new User.riderdashboard().setVisible(true);
+    } else if (userType.equalsIgnoreCase("User")) {
+        new userdashboard().setVisible(true);
+    }
+
+
+    this.dispose();         
+    }//GEN-LAST:event_jPanel10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -296,6 +334,7 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -305,6 +344,7 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

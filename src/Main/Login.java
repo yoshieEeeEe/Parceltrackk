@@ -159,61 +159,68 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registerbtnMouseClicked
 
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
-                String email = Email.getText();
-                String password = Pass.getText();
+            String email = Email.getText();
+            String password = Pass.getText();
 
-                if (email.equals("") || password.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+            if (email.equals("") || password.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+                return;
+            }
+
+            String sql = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ?";
+
+            try (
+                java.sql.Connection conn = config.connectDB();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ) {
+
+                pst.setString(1, email);
+                pst.setString(2, password);
+
+                java.sql.ResultSet rs = pst.executeQuery();
+
+                if (!rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Invalid email or password!");
                     return;
                 }
 
-                String sql = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ?";
-
-                try (
-                    java.sql.Connection conn = config.connectDB();
-                    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-                ) {
-
-                    pst.setString(1, email);
-                    pst.setString(2, password);
-
-                    java.sql.ResultSet rs = pst.executeQuery();
-
-                    if (!rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Invalid email or password!");
-                        return;
-                    }
-
-                    if (!rs.getString("status").equalsIgnoreCase("Active")) {
-                        JOptionPane.showMessageDialog(
-                            null,
-                            "Your account is inactive. Please contact the administrator."
-                        );
-                        return;
-                    }
-
-                    Session sess = new Session();
-                    sess.setSession(
-                        rs.getInt("a_id"),
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("type")
+                if (!rs.getString("status").equalsIgnoreCase("Active")) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Your account is inactive. Please contact the administrator."
                     );
+                    return;
+                }
 
-                    JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+                Session sess = new Session();
+                sess.setSession(
+                    rs.getInt("a_id"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("type")
+                );
 
-                    String userType = rs.getString("type");
+                JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
 
-                    if (userType.equalsIgnoreCase("Admin")) {
-                        new admindashboard().setVisible(true);
-                    } else if (userType.equalsIgnoreCase("User")) {
-                        new userdashboard().setVisible(true);
-                    }
+                String userType = rs.getString("type");
 
-                    dispose();
+     
+                if (userType.equalsIgnoreCase("Admin")) {
+                    new admindashboard().setVisible(true);
+                } else if (userType.equalsIgnoreCase("User")) {
+                    new userdashboard().setVisible(true);
+                } else if (userType.equalsIgnoreCase("Rider")) { 
+                    new User.riderdashboard().setVisible(true); 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Account type not recognized!");
+                    return;
+                }
 
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+                dispose();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+
     }//GEN-LAST:event_LoginMouseClicked
         }
     private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
