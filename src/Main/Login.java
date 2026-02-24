@@ -130,10 +130,10 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 90));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 50)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Log In");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 140, 80));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 110, 60));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 550));
 

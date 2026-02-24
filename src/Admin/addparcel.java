@@ -112,10 +112,10 @@ public class addparcel extends javax.swing.JFrame {
         jLabel4.setText("ParcelName:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 44)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("PARCEL");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 90));

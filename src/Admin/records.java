@@ -52,28 +52,20 @@ public class records extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        addbtn = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        addbtn = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,10 +75,10 @@ public class records extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("TRANSACTIONS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, 60));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
@@ -96,79 +88,6 @@ public class records extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        addbtn.setBackground(new java.awt.Color(96, 165, 250));
-        addbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addbtnMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addbtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                addbtnMouseExited(evt);
-            }
-        });
-        addbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel6.setText("Add");
-        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
-
-        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 40));
-
-        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel10MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel10MouseExited(evt);
-            }
-        });
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel7.setText("Update");
-        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jPanel11.setBackground(new java.awt.Color(153, 153, 0));
-        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel8.setText("Update");
-        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 120, 40));
-
-        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 120, 40));
-
-        jPanel12.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel12MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel12MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel12MouseExited(evt);
-            }
-        });
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel9.setText("Delete");
-        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 40));
 
         SearchText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,42 +138,6 @@ public class records extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 670, 400));
 
-        jPanel4.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
-            }
-        });
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel2.setText("HOME");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
-
-        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 90));
-
-        jPanel5.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
-            }
-        });
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel3.setText("TRANSACTIONS");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
-
-        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 220, 90));
-
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,27 +155,72 @@ public class records extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel4.setText("BACK");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 100));
+        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 210, 70));
 
-        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        addbtn.setBackground(new java.awt.Color(96, 165, 250));
+        addbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addbtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                addbtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                addbtnMouseExited(evt);
             }
         });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel5.setText("SETTINGS");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel6.setText("ADD");
+        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
+        jPanel8.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 210, 70));
+
+        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel10MouseExited(evt);
+            }
+        });
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel7.setText("UPDATE");
+        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 210, 70));
+
+        jPanel12.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel12MouseExited(evt);
+            }
+        });
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel9.setText("Delete");
+        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        jPanel8.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 210, 70));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -428,22 +356,6 @@ public class records extends javax.swing.JFrame {
         setColor(jPanel13);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel13MouseExited
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        resetColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        setColor(jPanel4);
-    }//GEN-LAST:event_jPanel4MouseExited
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        resetColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        setColor(jPanel5);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseExited
-
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
         resetColor(jPanel6);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseEntered
@@ -451,14 +363,6 @@ public class records extends javax.swing.JFrame {
     private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
         setColor(jPanel6);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseExited
-
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        resetColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseEntered
-
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        setColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseExited
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         admindashboard Back = new admindashboard();
@@ -507,25 +411,17 @@ public class records extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

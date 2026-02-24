@@ -45,8 +45,6 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Home = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         Transactions = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -68,37 +66,16 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("ADMIN DASHBOARD");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 510, 70));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 410, 70));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 140));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Home.setBackground(new java.awt.Color(96, 165, 250));
-        Home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Home.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HomeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                HomeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                HomeMouseExited(evt);
-            }
-        });
-        Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel2.setText("HOME");
-        Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 80, 30));
-
-        jPanel2.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 260, 70));
 
         Transactions.setBackground(new java.awt.Color(96, 165, 250));
         Transactions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -117,9 +94,9 @@ public class admindashboard extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel3.setText("TRANSACTIONS");
-        Transactions.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, -1));
+        Transactions.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, -1));
 
-        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 260, 70));
+        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 260, 90));
 
         jPanel7.setBackground(new java.awt.Color(96, 165, 250));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -135,9 +112,9 @@ public class admindashboard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel4.setText("SETTINGS");
-        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 140, -1));
+        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 140, -1));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 70));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 260, 90));
 
         Users.setBackground(new java.awt.Color(96, 165, 250));
         Users.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -156,9 +133,9 @@ public class admindashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel5.setText("USERS");
-        Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
-        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 260, 70));
+        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 260, 90));
 
         Home1.setBackground(new java.awt.Color(96, 165, 250));
         Home1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -179,7 +156,7 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel8.setText("PROFILE");
         Home1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 120, 30));
 
-        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 260, 70));
+        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 80));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 470));
 
@@ -207,20 +184,6 @@ public class admindashboard extends javax.swing.JFrame {
         p2.setBackground(new Color(0,102,153));
     }
     
-    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        Landingpage Home = new Landingpage();
-        Home.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_HomeMouseClicked
-
-    private void HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseEntered
-        resetColor(Home);
-    }//GEN-LAST:event_HomeMouseEntered
-
-    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
-        setColor(Home);
-    }//GEN-LAST:event_HomeMouseExited
-
     private void TransactionsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionsMouseEntered
         resetColor(Transactions);
     }//GEN-LAST:event_TransactionsMouseEntered
@@ -258,11 +221,11 @@ public class admindashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Home1MouseClicked
 
     private void Home1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home1MouseEntered
-        // TODO add your handling code here:
+        resetColor(Home1);        // TODO add your handling code here:
     }//GEN-LAST:event_Home1MouseEntered
 
     private void Home1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home1MouseExited
-        // TODO add your handling code here:
+        setColor(Home1);        // TODO add your handling code here:
     }//GEN-LAST:event_Home1MouseExited
 
     private void TransactionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionsMouseClicked
@@ -307,12 +270,10 @@ public class admindashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Home;
     private javax.swing.JPanel Home1;
     private javax.swing.JPanel Transactions;
     private javax.swing.JPanel Users;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

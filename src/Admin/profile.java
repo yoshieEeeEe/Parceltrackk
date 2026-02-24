@@ -72,8 +72,6 @@ public class profile extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -110,8 +108,8 @@ public class profile extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setText("Profile");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 140, 30));
+        jLabel9.setText("PROFILE");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 190, 30));
 
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("HOME");
@@ -180,7 +178,7 @@ public class profile extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel7.setText("Edit");
+        jLabel7.setText("EDIT");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 120, 40));
@@ -188,16 +186,6 @@ public class profile extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 102, 153));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel8.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-        jLabel8.setText("PROFILE");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 120, 40));
 
         jPanel9.setBackground(new java.awt.Color(96, 165, 250));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -209,10 +197,10 @@ public class profile extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        jLabel15.setText("Log Out");
+        jLabel15.setText("LOG OUT");
         jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 120, 40));
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 130, 40));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 420));
 
@@ -341,7 +329,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -351,7 +338,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

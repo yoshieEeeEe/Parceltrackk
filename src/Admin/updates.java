@@ -99,10 +99,10 @@ public class updates extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("USERS");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 170, 60));
+        jLabel6.setText("UPDATE");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 170, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
@@ -512,7 +512,7 @@ public class updates extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new updates(0, "", "", "", "").setVisible(true);
             }
         });
     }

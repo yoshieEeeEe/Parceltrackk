@@ -114,7 +114,7 @@ public class SendParcel extends javax.swing.JFrame {
         jLabel4.setText("ParcelName:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 44)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Send Parcel");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));

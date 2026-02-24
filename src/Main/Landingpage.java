@@ -136,9 +136,9 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel9.setText("Welcome!! To");
         jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 250, -1));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel10.setText("Parcel Tracking System");
-        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 210, 40));
+        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 260, 40));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel13.setText("and location of their parcels from dispatch\n");

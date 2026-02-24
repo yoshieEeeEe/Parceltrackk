@@ -104,10 +104,10 @@ public class Register extends javax.swing.JFrame {
         jLabel4.setText("Name:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 44)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Sign up");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Already have an account?");

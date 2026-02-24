@@ -84,10 +84,10 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("PARCEL");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 210, 60));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
