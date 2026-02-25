@@ -34,11 +34,13 @@ public class userdashboard extends javax.swing.JFrame {
         initComponents();
         displayParcels();
     }
-            void displayParcels(){
-        config cn = new config();
-        String sql = "SELECT * FROM tbl_parcel";
-        cn.displayData(sql, table);
-    }
+        void displayParcels() {
+            config cn = new config();
+            int currentUserId = Session.getUserId();
+
+            String sql = "SELECT * FROM tbl_parcel WHERE a_id = '" + currentUserId + "'";
+            cn.displayData(sql, table);
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +75,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        Select = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,8 +88,8 @@ public class userdashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("PARCEL");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, 60));
+        jLabel1.setText("USERDASHBOARD");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 370, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
@@ -280,23 +282,26 @@ public class userdashboard extends javax.swing.JFrame {
 
         jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 90));
 
-        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        Select.setBackground(new java.awt.Color(96, 165, 250));
+        Select.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Select.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SelectMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                SelectMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                SelectMouseExited(evt);
             }
         });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Select.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
         jLabel5.setText("SELECT RIDER");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 30));
+        Select.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 30));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
+        jPanel8.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -373,9 +378,7 @@ public class userdashboard extends javax.swing.JFrame {
         }
 
         int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this parcel?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
-
         if (confirm != JOptionPane.YES_OPTION) return;
-
         int id = Integer.parseInt(table.getValueAt(row, 0).toString());
 
         config con = new config();
@@ -400,29 +403,17 @@ public class userdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchTextActionPerformed
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
+
         config conf = new config();
-        String keyword = SearchText.getText().trim();
+      String keyword = SearchText.getText().trim();
 
-        if (keyword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+    String sql = "SELECT a_id, name, email, status FROM tbl_accounts " +
+                 "WHERE type = 'Rider' AND (" +
+                 "name LIKE '%" + keyword + "%' OR " +
+                 "email LIKE '%" + keyword + "%' OR " +
+                 "a_id LIKE '%" + keyword + "%')";
 
-            displayParcels(); 
-            return;
-        }
-
-        String sql = "SELECT p_id, a_id, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE p_type LIKE '%" + keyword + "%' " +
-                     "OR p_name LIKE '%" + keyword + "%' " +
-                     "OR p_id LIKE '%" + keyword + "%'";
-
-        conf.displayData(sql, table);
-
-     
-        if (table.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "No matching records found.");
-            displayParcels();
-    }
-        
+        conf.displayData(sql, table);                             
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -457,13 +448,13 @@ public class userdashboard extends javax.swing.JFrame {
         setColor(jPanel6);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseExited
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        resetColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseEntered
+    private void SelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseEntered
+        resetColor(Select);        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectMouseEntered
 
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        setColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseExited
+    private void SelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseExited
+        setColor(Select);        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectMouseExited
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
             
@@ -477,6 +468,22 @@ public class userdashboard extends javax.swing.JFrame {
         Home1.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void SelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseClicked
+
+        int row = table.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a parcel from the table first!");
+            return;
+        }
+
+        String p_id = table.getValueAt(row, 0).toString();
+        Riders selectRider = new Riders();
+        selectRider.parcel_id = p_id; 
+
+        selectRider.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_SelectMouseClicked
 
     /**
      * @param args the command line arguments
@@ -515,6 +522,7 @@ public class userdashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SearchText;
+    private javax.swing.JPanel Select;
     private javax.swing.JPanel Send;
     private javax.swing.JPanel addbtn;
     private javax.swing.JLabel jLabel1;
@@ -536,7 +544,6 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

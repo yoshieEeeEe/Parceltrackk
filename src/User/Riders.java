@@ -14,16 +14,15 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author USER23
+ * @author Dell
  */
-public class riderdashboard extends javax.swing.JFrame {
+public class Riders extends javax.swing.JFrame {
 
     /**
-     * Creates new form riderdashboard
+     * Creates new form Riders
      */
     public String parcel_id;
-    public riderdashboard() {
-        
+    public Riders() {
         
         if (Session.getUserId() == 0) { 
         JOptionPane.showMessageDialog(null, "Login Required!");
@@ -32,17 +31,18 @@ public class riderdashboard extends javax.swing.JFrame {
         return; 
         }
         initComponents();
-        displayParcels();
+        displayRiders();
     }
-    public void displayParcels() {
-        config conf = new config();
-        int loggedInRiderId = Session.getUserId();
-        
-        String sql = "SELECT p_id, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = ? AND (p_status = 'On going' OR p_status = 'Delivered')";
-        
-        conf.displayData(sql, table, loggedInRiderId); 
+    public Riders(String pid) {
+        initComponents();
+        this.parcel_id = pid; 
+        displayRiders();     
     }
+    public void displayRiders() {
+    config cn = new config();
+    String sql = "SELECT a_id, name, email, status FROM tbl_accounts WHERE type = 'Rider'";
+    cn.displayData(sql, table);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,8 +60,6 @@ public class riderdashboard extends javax.swing.JFrame {
         SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         Send = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -78,8 +76,8 @@ public class riderdashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("RIDERDASHBOARD");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 390, 60));
+        jLabel1.setText("Rider");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 100, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
@@ -118,27 +116,6 @@ public class riderdashboard extends javax.swing.JFrame {
 
         jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 40));
 
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setText("PROFILE");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 180, 60));
-
         Send.setBackground(new java.awt.Color(96, 165, 250));
         Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,8 +132,8 @@ public class riderdashboard extends javax.swing.JFrame {
         Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("UPDATE PARCEL");
-        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLabel2.setText("SELECT RIDER");
+        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 190, 60));
 
@@ -197,7 +174,6 @@ public class riderdashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-         
     public void setColor(JPanel p){
         p.setBackground(new Color(96,165,250));
     }
@@ -211,25 +187,23 @@ public class riderdashboard extends javax.swing.JFrame {
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
         config conf = new config();
-           String keyword = SearchText.getText().trim();
-           int riderId = Session.getUserId();
+            String keyword = SearchText.getText().trim();
 
-           if (keyword.isEmpty()) {
-               displayParcels();
-               return;
-           }
+            if (keyword.isEmpty()) {
+                displayRiders();
+                return;
+            }
 
-           String sql = "SELECT p_id, a_id, p_type, p_weight, sender_address, receiver_address, p_status " +
-                        "FROM tbl_parcel WHERE p_Rider_id = '" + riderId + "' AND (" +
-                        "p_type LIKE '%" + keyword + "%' OR p_id LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%')";
 
-           conf.displayData(sql, table);
+            String sql = "SELECT a_id, name, email, status FROM tbl_accounts " +
+                         "WHERE type = 'Rider' AND (name LIKE ? OR a_id LIKE ?)";
 
-           if (table.getRowCount() == 0) {
-               JOptionPane.showMessageDialog(this, "No matching assigned parcels found.");
-               displayParcels();
+            conf.displayData(sql, table, "%" + keyword + "%", "%" + keyword + "%");
+
+            if (table.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "No matching riders found.");
+                displayRiders();
         }
-
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -241,27 +215,20 @@ public class riderdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel13MouseExited
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
-
         int row = table.getSelectedRow(); 
-            if (row == -1) return;
-
-            String currentStatus = table.getValueAt(row, 5).toString();
-            String pId = table.getValueAt(row, 0).toString();
-            
-            if (currentStatus.equalsIgnoreCase("Delivered")) {
-
-                JOptionPane.showMessageDialog(this, "This parcel is already Delivered. You cannot change it!");
-                return; 
-            }
-
-            String nextStatus = currentStatus.equalsIgnoreCase("Pending") ? "On going" : "Delivered";
-
-            config conf = new config();
-            String sql = "UPDATE tbl_parcel SET p_status = ? WHERE p_id = ?";
-            conf.addRecord(sql, nextStatus, pId); 
-
-            displayParcels();
-    
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a Rider first!");
+            return;
+        }
+        
+        String riderId = table.getValueAt(row, 0).toString(); 
+        config conf = new config();
+        String sql = "UPDATE tbl_parcel SET a_id = ?, p_status = 'On going' WHERE p_id = ?";
+        conf.addRecord(sql, riderId, parcel_id); 
+        
+        JOptionPane.showMessageDialog(this, "Parcel assigned to Rider successfully!");
+        new userdashboard().setVisible(true);
+        this.dispose();           
     }//GEN-LAST:event_SendMouseClicked
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
@@ -271,20 +238,6 @@ public class riderdashboard extends javax.swing.JFrame {
     private void SendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseExited
         setColor(Send);
     }//GEN-LAST:event_SendMouseExited
-
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        resetColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseEntered
-
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        setColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseExited
-
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        Admin.profile Home1 =  new Admin.profile ();
-        Home1.setVisible(true);
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -303,20 +256,20 @@ public class riderdashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(riderdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(riderdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(riderdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(riderdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new riderdashboard().setVisible(true);
+                new Riders().setVisible(true);
             }
         });
     }
@@ -328,12 +281,10 @@ public class riderdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
