@@ -72,7 +72,6 @@ public class Register extends javax.swing.JFrame {
         jLabel6.setText("Type:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
-        Type.setText(" ");
         Type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TypeActionPerformed(evt);
@@ -159,51 +158,40 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_loginbtnMouseClicked
 
     private void registerpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseClicked
-                 config con = new config();
+        config con = new config();
 
-                String name = Name.getText();
-                String email = Email.getText();
-                String password = Pass.getText();
-                String type = Type.getText();
+        String name = Name.getText().trim();
+        String email = Email.getText().trim();
+        String password = Pass.getText();
+        String type = Type.getText().trim();
+        if (name.equals("") || email.equals("") || password.equals("") || type.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in all fields!", "Validation Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-              
-                if (name.equals("") || email.equals("") || password.equals("") || type.equals("")) {
-                    JOptionPane.showMessageDialog(
-                          null, 
-                          "Please fill in all fields!", 
-                          "Validation Error", 
-                          JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-
-                if (!type.equalsIgnoreCase("Admin") && !type.equalsIgnoreCase("User")) {
-                    JOptionPane.showMessageDialog(
-                            null, 
-                           "Invalid Credentials! Type must be 'Admin' or 'User'.", 
-                           "Error", 
-                           JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?,?,?,?,?)";
+        if (!type.equalsIgnoreCase("Admin") && !type.equalsIgnoreCase("User") && !type.equalsIgnoreCase("Rider")) {
+            JOptionPane.showMessageDialog(null, "Invalid Account Type! Must be 'Admin', 'User', or 'Rider'.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+                
+        String sql = "INSERT INTO tbl_accounts (name, email, password, type, status) VALUES (?,?,?,?,?)";
 
 
-                con.addRecord(
-                    sql, 
-                    name, 
-                    email, 
-                    password, 
-                    type,     
-                    "Pending"
-                );
+        con.addRecord(
+            sql, 
+            name, 
+            email, 
+            password, 
+            type,     
+            "Pending"
+        );
 
-                JOptionPane.showMessageDialog(null, "RECORD ADDED!");
+        JOptionPane.showMessageDialog(null, "RECORD ADDED! Account is now PENDING approval.");
 
-
-                Name.setText("");
-                Email.setText("");
-                Pass.setText("");
-                Type.setText("");
+        Name.setText("");
+        Email.setText("");
+        Pass.setText("");
+        Type.setText("");
     }//GEN-LAST:event_registerpanelMouseClicked
 
     private void TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeActionPerformed

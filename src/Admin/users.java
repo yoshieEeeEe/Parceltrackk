@@ -38,11 +38,11 @@ public class users extends javax.swing.JFrame {
         }
     });
     }
-    void displayUser(){
-        config cn = new config();
-        String sql = "SELECT * FROM tbl_accounts";
-        cn.displayData(sql, jTable1);
-    }
+        void displayUser(){
+            config cn = new config();
+            String sql = "SELECT a_id, name, email, password, type, status FROM tbl_accounts";
+            cn.displayData(sql, jTable1);
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,8 +71,6 @@ public class users extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -248,9 +246,9 @@ public class users extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel2.setText("HOME");
-        Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
-        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 220, 90));
+        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 90));
 
         jPanel5.setBackground(new java.awt.Color(96, 165, 250));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -266,31 +264,16 @@ public class users extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel3.setText("TRANSACTIONS");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 20));
 
-        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 220, 90));
-
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel4.setText("USERS");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
-
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 220, 90));
+        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, 90));
 
         jPanel7.setBackground(new java.awt.Color(96, 165, 250));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel7MouseEntered(evt);
             }
@@ -301,10 +284,10 @@ public class users extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel5.setText("SETTINGS");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        jLabel5.setText("MANAGE ACCOUNT");
+        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 220, 90));
+        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 260, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -352,14 +335,6 @@ public class users extends javax.swing.JFrame {
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
         setColor(jPanel7);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseExited
-
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        resetColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseEntered
-
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        setColor(jPanel6);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6MouseExited
 
     private void addbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseEntered
         resetColor(addbtn);        // TODO add your handling code here:
@@ -425,10 +400,10 @@ public class users extends javax.swing.JFrame {
         return;
     } 
     
-    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
-    
-    if (confirm != JOptionPane.YES_OPTION) return;
-    
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirm Delete", JOptionPane.YES_NO_OPTION);   
+   
+    if (confirm != JOptionPane.YES_OPTION) return;    
+  
     int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
     
     config con = new config();
@@ -472,6 +447,62 @@ public class users extends javax.swing.JFrame {
         Home.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_HomeMouseClicked
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        int row = jTable1.getSelectedRow();
+
+            if (row == -1) {
+                JOptionPane.showMessageDialog(this, "Please select an account from the table first!");
+                return;
+            }
+
+            String id = jTable1.getValueAt(row, 0).toString();
+            String name = jTable1.getValueAt(row, 1).toString();
+            String currentStatus = jTable1.getValueAt(row, 5).toString().trim(); 
+
+            if (currentStatus.equalsIgnoreCase("Pending")) {
+                int confirm = JOptionPane.showConfirmDialog(this, 
+                    "Account for " + name + " is PENDING. Do you want to ACTIVATE it?", 
+                    "Approval System", JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    updateStatus(id, "Active");
+                }
+            } 
+            else if (currentStatus.equalsIgnoreCase("Active")) {
+                int confirm = JOptionPane.showConfirmDialog(this,
+                    "Account for " + name + " is already Active. Change to Inactive?",
+                    "Manage Account", JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    updateStatus(id, "Inactive");
+                }
+            }
+            else if (currentStatus.equalsIgnoreCase("Inactive")) {
+                int confirm = JOptionPane.showConfirmDialog(this,
+                    "Account for " + name + " is currently Inactive. Reactivate it?",
+                    "Manage Account", JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    updateStatus(id, "Active");
+                }
+            }
+    }
+
+    private void updateStatus(String id, String newStatus) {
+        config conf = new config();
+            String sql = "UPDATE tbl_accounts SET status = ? WHERE a_id = ?";
+
+            try {
+                conf.addRecord(sql, newStatus, id);
+
+                JOptionPane.showMessageDialog(this, "Account status updated to " + newStatus + "!");
+                displayUser(); 
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            }   // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel7MouseClicked
        
     /**
      * @param args the command line arguments
@@ -517,7 +548,6 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -532,7 +562,6 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;

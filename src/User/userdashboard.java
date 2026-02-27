@@ -34,13 +34,15 @@ public class userdashboard extends javax.swing.JFrame {
         initComponents();
         displayParcels();
     }
-        void displayParcels() {
-            config cn = new config();
-            int currentUserId = Session.getUserId();
-
-            String sql = "SELECT * FROM tbl_parcel WHERE a_id = '" + currentUserId + "'";
-            cn.displayData(sql, table);
-        }
+    void displayParcels() {
+        
+        config cn = new config();
+        int currentUserId = Session.getUserId();
+        String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
+                     "FROM tbl_parcel " +
+                     "WHERE a_id = " + currentUserId;
+        cn.displayData(sql, table);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,8 +73,6 @@ public class userdashboard extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         Send = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Select = new javax.swing.JPanel();
@@ -241,25 +241,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel2.setText("SEND PARCELS");
         Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jPanel8.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 90));
-
-        jPanel5.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
-            }
-        });
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
-        jLabel3.setText("RECEIVE PARCELS");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
-
-        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 220, 90));
+        jPanel8.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 90));
 
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -280,7 +262,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel4.setText("PROFILE");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 220, 90));
+        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 220, 90));
 
         Select.setBackground(new java.awt.Color(96, 165, 250));
         Select.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -301,7 +283,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel5.setText("SELECT RIDER");
         Select.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 30));
 
-        jPanel8.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 220, 90));
+        jPanel8.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 220, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -404,16 +386,13 @@ public class userdashboard extends javax.swing.JFrame {
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
 
-        config conf = new config();
-      String keyword = SearchText.getText().trim();
-
-    String sql = "SELECT a_id, name, email, status FROM tbl_accounts " +
-                 "WHERE type = 'Rider' AND (" +
-                 "name LIKE '%" + keyword + "%' OR " +
-                 "email LIKE '%" + keyword + "%' OR " +
-                 "a_id LIKE '%" + keyword + "%')";
-
-        conf.displayData(sql, table);                             
+    config conf = new config();
+        String keyword = SearchText.getText().trim();
+        int currentUserId = Session.getUserId();
+        String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
+                     "FROM tbl_parcel WHERE a_id = " + currentUserId + " " +
+                     "AND (p_name LIKE '%" + keyword + "%' OR p_type LIKE '%" + keyword + "%')";
+        conf.displayData(sql, table);                      
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -431,14 +410,6 @@ public class userdashboard extends javax.swing.JFrame {
     private void SendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseExited
         setColor(Send);
     }//GEN-LAST:event_SendMouseExited
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        resetColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        setColor(jPanel5);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
         resetColor(jPanel6);        // TODO add your handling code here:
@@ -529,7 +500,6 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -542,7 +512,6 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
