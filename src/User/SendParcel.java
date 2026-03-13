@@ -100,6 +100,12 @@ public class SendParcel extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerpanelMouseExited(evt);
+            }
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,6 +134,12 @@ public class SendParcel extends javax.swing.JFrame {
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
             }
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,6 +231,22 @@ public class SendParcel extends javax.swing.JFrame {
         Back.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
+        resetColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseEntered
+
+    private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
+        setColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseExited
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        resetColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        setColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseExited
 
     /**
      * @param args the command line arguments

@@ -89,6 +89,12 @@ public class Register extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerpanelMouseExited(evt);
+            }
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,13 +150,14 @@ public class Register extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-            public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
-    }
-    
-    public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
-    }
+             
+        public void setColor(JPanel p){
+            p.setBackground(new Color(96,165,250));
+        }
+
+        public void resetColor(JPanel p2){
+            p2.setBackground(new Color(0,102,153));
+        }
     private void loginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseClicked
         Login loginbtn = new Login();
         loginbtn.setVisible(true);
@@ -201,6 +208,14 @@ public class Register extends javax.swing.JFrame {
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
+
+    private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
+        resetColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseEntered
+
+    private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
+        setColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseExited
 
     /**
      * @param args the command line arguments

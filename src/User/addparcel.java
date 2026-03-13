@@ -98,11 +98,22 @@ public class addparcel extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerpanelMouseExited(evt);
+            }
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setText("ADD PARCEL");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+        });
         registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 140, 40));
@@ -126,6 +137,12 @@ public class addparcel extends javax.swing.JFrame {
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
             }
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,6 +240,26 @@ public class addparcel extends javax.swing.JFrame {
         Back.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
+        resetColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseEntered
+
+    private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
+        setColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseExited
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        resetColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        setColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseExited
 
     /**
      * @param args the command line arguments

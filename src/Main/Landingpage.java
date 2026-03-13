@@ -34,9 +34,6 @@ public class Landingpage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Loginbtn = new javax.swing.JPanel();
@@ -48,8 +45,6 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        registerbtn = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,22 +62,7 @@ public class Landingpage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Parcel Tracking System");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Home");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Services");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("Contact Us");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 90));
 
@@ -112,11 +92,11 @@ public class Landingpage extends javax.swing.JFrame {
         });
         Loginbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jLabel15.setText("Login");
-        Loginbtn.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, -1));
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel15.setText("CONTINUE...");
+        Loginbtn.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 130, 20));
 
-        jPanel1.add(Loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 130, 50));
+        jPanel1.add(Loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 160, 50));
 
         jPanel8.setBackground(new java.awt.Color(102, 204, 255));
         jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
@@ -141,33 +121,12 @@ public class Landingpage extends javax.swing.JFrame {
         jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 260, 40));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jLabel13.setText("and location of their parcels from dispatch\n");
+        jLabel13.setText("and location of their parcels from dispatch ");
         jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, 20));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel14.setText("to delivery.");
         jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 20));
-
-        registerbtn.setBackground(new java.awt.Color(96, 165, 250));
-        registerbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        registerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerbtnMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                registerbtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                registerbtnMouseExited(evt);
-            }
-        });
-        registerbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jLabel16.setText("Register");
-        registerbtn.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
-
-        jPanel8.add(registerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 130, 50));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
         jLabel7.setToolTipText("");
@@ -194,20 +153,6 @@ public class Landingpage extends javax.swing.JFrame {
     private void LoginbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseExited
         setColor(Loginbtn);        // TODO add your handling code here:
     }//GEN-LAST:event_LoginbtnMouseExited
-
-    private void registerbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseEntered
-        resetColor(registerbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_registerbtnMouseEntered
-
-    private void registerbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseExited
-        setColor(registerbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_registerbtnMouseExited
-
-    private void registerbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbtnMouseClicked
-          Register registerbtn = new Register ();
-          registerbtn.setVisible(true);
-          dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_registerbtnMouseClicked
 
     private void LoginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseClicked
         Login loginbtn = new Login();
@@ -259,11 +204,7 @@ public class Landingpage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -271,6 +212,5 @@ public class Landingpage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel registerbtn;
     // End of variables declaration//GEN-END:variables
 }

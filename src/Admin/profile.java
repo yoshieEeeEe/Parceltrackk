@@ -35,7 +35,8 @@ public class profile extends javax.swing.JFrame {
         
     }
     private void loadProfile() {
-    Namelbl.setText(Session.getName());
+    Idlbl.setText(String.valueOf(Session.getUserId()));
+    Namelbl1.setText(Session.getName());
     Emaillbl.setText(Session.getEmail());
     Typelbl.setText(Session.getType());
 }
@@ -54,9 +55,6 @@ public class profile extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -64,9 +62,11 @@ public class profile extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Namelbl = new javax.swing.JLabel();
+        Idlbl = new javax.swing.JLabel();
         Emaillbl = new javax.swing.JLabel();
         Typelbl = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Namelbl1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -111,18 +111,6 @@ public class profile extends javax.swing.JFrame {
         jLabel9.setText("PROFILE");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 190, 30));
 
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("HOME");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
-
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel11.setText("CONTACT US");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, -1, -1));
-
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel12.setText("SERVICES");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, -1));
-
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 150, 80));
 
@@ -136,7 +124,7 @@ public class profile extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        jLabel4.setText("Name:");
+        jLabel4.setText("ID:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 10));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -149,16 +137,23 @@ public class profile extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jLabel10.setText("Email:");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, -1));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 50, 10));
 
-        Namelbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Namelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 140, 10));
+        Idlbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Idlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 140, 10));
 
         Emaillbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 130, 10));
+        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, 10));
 
         Typelbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         jPanel4.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 120, 10));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel8.setText("Name:");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, 10));
+
+        Namelbl1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Namelbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 140, 10));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 430, 160));
 
@@ -175,6 +170,14 @@ public class profile extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -192,6 +195,12 @@ public class profile extends javax.swing.JFrame {
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel9MouseExited(evt);
             }
         });
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -212,6 +221,12 @@ public class profile extends javax.swing.JFrame {
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel10MouseExited(evt);
             }
         });
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -275,6 +290,30 @@ public class profile extends javax.swing.JFrame {
     this.dispose();         
     }//GEN-LAST:event_jPanel10MouseClicked
 
+    private void jPanel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseEntered
+        resetColor(jPanel9);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel9MouseEntered
+
+    private void jPanel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseExited
+        setColor(jPanel9);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel9MouseExited
+
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        resetColor(jPanel6);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseEntered
+
+    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+        setColor(jPanel6);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseExited
+
+    private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
+        resetColor(jPanel10);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel10MouseEntered
+
+    private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
+        setColor(jPanel10);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel10MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -313,22 +352,21 @@ public class profile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Emaillbl;
     private javax.swing.JPanel Home;
-    private javax.swing.JLabel Namelbl;
+    private javax.swing.JLabel Idlbl;
+    private javax.swing.JLabel Namelbl1;
     private javax.swing.JLabel Typelbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

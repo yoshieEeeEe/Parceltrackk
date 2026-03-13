@@ -8,7 +8,9 @@ package Admin;
 import Main.Login;
 import config.Session;
 import config.config;
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -98,6 +100,12 @@ public class addparcel extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerpanelMouseExited(evt);
+            }
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -127,11 +135,22 @@ public class addparcel extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("BACK");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 90, 40));
@@ -155,8 +174,15 @@ public class addparcel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void setColor(JPanel p){
+        p.setBackground(new Color(96,165,250));
+    }
+    
+    public void resetColor(JPanel p2){
+        p2.setBackground(new Color(0,102,153));
+    }
     private void WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_WeightActionPerformed
@@ -208,6 +234,26 @@ public class addparcel extends javax.swing.JFrame {
         Back.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        resetColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+           // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        setColor(jPanel2);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
+        resetColor(registerpanel);       // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseEntered
+
+    private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
+        setColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseExited
 
     /**
      * @param args the command line arguments

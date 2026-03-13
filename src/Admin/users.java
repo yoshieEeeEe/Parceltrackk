@@ -69,8 +69,6 @@ public class users extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         Home = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -248,25 +246,7 @@ public class users extends javax.swing.JFrame {
         jLabel2.setText("HOME");
         Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
-        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 90));
-
-        jPanel5.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
-            }
-        });
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel3.setText("TRANSACTIONS");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 20));
-
-        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, 90));
+        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 90));
 
         jPanel7.setBackground(new java.awt.Color(96, 165, 250));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -287,7 +267,7 @@ public class users extends javax.swing.JFrame {
         jLabel5.setText("MANAGE ACCOUNT");
         jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 260, 90));
+        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 260, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -319,14 +299,6 @@ public class users extends javax.swing.JFrame {
     private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
        setColor(Home);
     }//GEN-LAST:event_HomeMouseExited
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        resetColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        setColor(jPanel5);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
         resetColor(jPanel7);        // TODO add your handling code here:
@@ -547,7 +519,6 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -561,7 +532,6 @@ public class users extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;

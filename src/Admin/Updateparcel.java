@@ -8,7 +8,9 @@ package Admin;
 import Main.Login;
 import config.Session;
 import config.config;
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -106,6 +108,12 @@ public class Updateparcel extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerpanelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerpanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerpanelMouseExited(evt);
+            }
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -164,7 +172,13 @@ public class Updateparcel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void setColor(JPanel p){
+        p.setBackground(new Color(96,165,250));
+    }
+    
+    public void resetColor(JPanel p2){
+        p2.setBackground(new Color(0,102,153));
+    }
     private void WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_WeightActionPerformed
@@ -199,6 +213,14 @@ public class Updateparcel extends javax.swing.JFrame {
         Back.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
+        resetColor(registerpanel);        // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseEntered
+
+    private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
+        setColor(registerpanel);     // TODO add your handling code here:
+    }//GEN-LAST:event_registerpanelMouseExited
 
     /**
      * @param args the command line arguments
