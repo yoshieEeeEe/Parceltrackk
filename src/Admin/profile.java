@@ -11,7 +11,11 @@ import config.Session;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.Image;
 /**
  *
  * @author USER23
@@ -35,12 +39,54 @@ public class profile extends javax.swing.JFrame {
         
     }
     private void loadProfile() {
-    Idlbl.setText(String.valueOf(Session.getUserId()));
-    Namelbl1.setText(Session.getName());
-    Emaillbl.setText(Session.getEmail());
-    Typelbl.setText(Session.getType());
-}
 
+        Idlbl.setText(String.valueOf(config.Session.getUserId()));
+        Namelbl1.setText(config.Session.getName());
+        Emaillbl1.setText(config.Session.getEmail()); 
+        Typelbl.setText(config.Session.getType());
+
+        String sql = "SELECT password FROM tbl_accounts WHERE a_id = ?";
+
+        try (java.sql.Connection conn = config.config.connectDB();
+             java.sql.PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setInt(1, config.Session.getUserId());
+
+            try (java.sql.ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    Emaillbl.setText(rs.getString("password"));
+                }
+            }
+        } catch (java.sql.SQLException e) {
+            System.out.println("Error loading password: " + e.getMessage());
+            Emaillbl.setText("********");
+        }
+    }
+        public void selectImage() {
+            // Leaving this empty makes it go to the system default (usually Documents or Recent)
+            JFileChooser browseImageFile = new JFileChooser();
+
+            // Filter to show only images
+            FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+            browseImageFile.addChoosableFileFilter(fnef);
+
+            int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+            if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+                File selectedImageFile = browseImageFile.getSelectedFile();
+                String selectedImagePath = selectedImageFile.getAbsolutePath();
+
+                // Display the image on jLabel6
+                ImageIcon ii = new ImageIcon(selectedImagePath);
+
+                // Resize to fit the label
+                Image image = ii.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
+
+                jLabel6.setIcon(new ImageIcon(image));
+                jLabel6.setText(""); // Clears the "Profile" text
+    
+        }
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,16 +113,17 @@ public class profile extends javax.swing.JFrame {
         Typelbl = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         Namelbl1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        Emaillbl1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
 
         Home.setBackground(new java.awt.Color(153, 153, 0));
         Home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -123,39 +170,46 @@ public class profile extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel4.setText("ID:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 10));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 50, 20));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel5.setText("User Status:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, 10));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 110, 20));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 23)); // NOI18N
         jLabel1.setText("ACCOUNT SETTINGS");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 30));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 250, 30));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        jLabel10.setText("Email:");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 50, 10));
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel10.setText("Password:");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, 20));
 
         Idlbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Idlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 140, 10));
+        jPanel4.add(Idlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 140, 20));
 
         Emaillbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, 10));
+        jPanel4.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 130, 20));
 
         Typelbl.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 120, 10));
+        jPanel4.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, 20));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel8.setText("Name:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, 10));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 70, 20));
 
         Namelbl1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jPanel4.add(Namelbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 140, 10));
+        jPanel4.add(Namelbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 140, 20));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 430, 160));
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel11.setText("Email:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 60, 20));
+
+        Emaillbl1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jPanel4.add(Emaillbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 130, 20));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 590, 220));
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 153));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -163,14 +217,21 @@ public class profile extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("Profile");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 190));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 230, 210));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 230, 210));
 
         jPanel6.setBackground(new java.awt.Color(96, 165, 250));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -184,11 +245,31 @@ public class profile extends javax.swing.JFrame {
         jLabel7.setText("EDIT");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 120, 40));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 120, 40));
 
-        jPanel7.setBackground(new java.awt.Color(0, 102, 153));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 50, 770, 420));
+
+        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel10MouseExited(evt);
+            }
+        });
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel16.setText("BACK");
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 100, 40));
 
         jPanel9.setBackground(new java.awt.Color(96, 165, 250));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -207,35 +288,9 @@ public class profile extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jLabel15.setText("LOG OUT");
-        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 130, 40));
-
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 420));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 770, 420));
-
-        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel10MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel10MouseExited(evt);
-            }
-        });
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel16.setText("BACK");
-        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 70, 40));
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 110, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 870, 420));
 
@@ -264,10 +319,16 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeMouseExited
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
-        config.Session.clearSession();
-        JOptionPane.showMessageDialog(null, "Logged out successfully!");
-        new Login().setVisible(true);
-        dispose();        // TODO add your handling code here:
+     config.config conf = new config.config();
+
+    String sql = "INSERT INTO tbl_logs (a_id, log_event) VALUES (?, ?)";
+    conf.addRecord(sql, config.Session.getUserId(), "Logged Out");
+
+    config.Session.clearSession();
+
+    JOptionPane.showMessageDialog(null, "Logged out successfully!");
+    new Login().setVisible(true);
+    this.dispose();    
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
@@ -314,6 +375,65 @@ public class profile extends javax.swing.JFrame {
         setColor(jPanel10);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel10MouseExited
 
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+// 1. Get current values to show as defaults in the input boxes
+    String currentName = Namelbl1.getText();
+    String currentEmail = Emaillbl1.getText();
+    String currentPass = Emaillbl.getText(); // FIX: Changed .setText() to .getText()
+
+    // 2. Open input dialogs for the user to type new info
+    String newName = JOptionPane.showInputDialog(this, "Update Name:", currentName);
+    if (newName == null) return; // User clicked cancel
+
+    String newEmail = JOptionPane.showInputDialog(this, "Update Email:", currentEmail);
+    if (newEmail == null) return;
+
+    String newPass = JOptionPane.showInputDialog(this, "Update Password:", currentPass);
+    if (newPass == null) return;
+
+    // 3. Validation: Ensure no fields are empty
+    if (newName.trim().isEmpty() || newEmail.trim().isEmpty() || newPass.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All fields are required!");
+        return;
+    }
+
+    // 4. Update the Database
+    String sql = "UPDATE tbl_accounts SET name = ?, email = ?, password = ? WHERE a_id = ?";
+    
+    try (java.sql.Connection conn = config.config.connectDB();
+         java.sql.PreparedStatement pst = conn.prepareStatement(sql)) {
+        
+        pst.setString(1, newName);
+        pst.setString(2, newEmail);
+        pst.setString(3, newPass);
+        pst.setInt(4, config.Session.getUserId());
+        
+        int rowsUpdated = pst.executeUpdate();
+        
+        if (rowsUpdated > 0) {
+            // 5. Update the Session so other frames (Dashboards) see the new name/email
+            config.Session.setSession(config.Session.getUserId(), newName, newEmail, config.Session.getType());
+            
+            // 6. Refresh the current labels
+            loadProfile();
+            
+            JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+            
+            // 7. Record to logs
+            config.config conf = new config.config();
+            conf.addRecord("INSERT INTO tbl_logs (a_id, log_event) VALUES (?, ?)", 
+                           config.Session.getUserId(), "Updated Profile Info");
+        }
+        
+    } catch (java.sql.SQLException e) {
+        JOptionPane.showMessageDialog(this, "Update Error: " + e.getMessage());
+    }       // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        selectImage();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -351,12 +471,14 @@ public class profile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Emaillbl;
+    private javax.swing.JLabel Emaillbl1;
     private javax.swing.JPanel Home;
     private javax.swing.JLabel Idlbl;
     private javax.swing.JLabel Namelbl1;
     private javax.swing.JLabel Typelbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -375,7 +497,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

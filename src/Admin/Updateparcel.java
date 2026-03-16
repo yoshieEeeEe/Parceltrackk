@@ -171,6 +171,7 @@ public class Updateparcel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void setColor(JPanel p){
         p.setBackground(new Color(96,165,250));

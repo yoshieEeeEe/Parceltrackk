@@ -47,12 +47,12 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Transactions = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         Users = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         Home1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        Logs = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -96,25 +96,7 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel3.setText("TRANSACTIONS");
         Transactions.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, -1));
 
-        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 260, 90));
-
-        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
-            }
-        });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel4.setText("SETTINGS");
-        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 140, -1));
-
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 260, 90));
+        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 270, 90));
 
         Users.setBackground(new java.awt.Color(96, 165, 250));
         Users.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -135,7 +117,7 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel5.setText("USERS");
         Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
-        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 260, 90));
+        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 270, 80));
 
         Home1.setBackground(new java.awt.Color(96, 165, 250));
         Home1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -154,9 +136,30 @@ public class admindashboard extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel8.setText("PROFILE");
-        Home1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 120, 30));
+        Home1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 120, 30));
 
-        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 80));
+        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 270, 80));
+
+        Logs.setBackground(new java.awt.Color(96, 165, 250));
+        Logs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Logs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LogsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogsMouseExited(evt);
+            }
+        });
+        Logs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel4.setText("LOGS");
+        Logs.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 70, -1));
+
+        jPanel2.add(Logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 270, 90));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 470));
 
@@ -200,14 +203,6 @@ public class admindashboard extends javax.swing.JFrame {
         setColor(Users);
     }//GEN-LAST:event_UsersMouseExited
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        resetColor(jPanel7);
-    }//GEN-LAST:event_jPanel7MouseEntered
-
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        setColor(jPanel7);
-    }//GEN-LAST:event_jPanel7MouseExited
-
     private void UsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersMouseClicked
         users Users = new users();
         Users.setVisible(true);
@@ -233,6 +228,20 @@ public class admindashboard extends javax.swing.JFrame {
         Transactions.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_TransactionsMouseClicked
+
+    private void LogsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogsMouseClicked
+    logs LogsFrame = new logs(); // Ensure the class name in logs.java is 'logs'
+    LogsFrame.setVisible(true);
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_LogsMouseClicked
+
+    private void LogsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogsMouseEntered
+
+    private void LogsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogsMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogsMouseExited
 
     /**
      * @param args the command line arguments
@@ -271,6 +280,7 @@ public class admindashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Home1;
+    private javax.swing.JPanel Logs;
     private javax.swing.JPanel Transactions;
     private javax.swing.JPanel Users;
     private javax.swing.JLabel jLabel1;
@@ -284,6 +294,5 @@ public class admindashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,12 +35,15 @@ public class userdashboard extends javax.swing.JFrame {
         displayParcels();
     }
     void displayParcels() {
-        
         config cn = new config();
         int currentUserId = Session.getUserId();
+
+        // This query pulls EVERY parcel where a_id matches the logged-in user
         String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
                      "FROM tbl_parcel " +
-                     "WHERE a_id = " + currentUserId;
+                     "WHERE a_id = '" + currentUserId + "' " + 
+                     "ORDER BY p_id DESC"; 
+
         cn.displayData(sql, table);
     }
     /**
@@ -389,10 +392,18 @@ public class userdashboard extends javax.swing.JFrame {
     config conf = new config();
         String keyword = SearchText.getText().trim();
         int currentUserId = Session.getUserId();
+
+        if(keyword.isEmpty()){
+            displayParcels();
+            return;
+        }
+
+        // Still filtering by currentUserId so they only search THEIR data
         String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = " + currentUserId + " " +
-                     "AND (p_name LIKE '%" + keyword + "%' OR p_type LIKE '%" + keyword + "%')";
-        conf.displayData(sql, table);                      
+                     "FROM tbl_parcel WHERE a_id = '" + currentUserId + "' " +
+                     "AND (p_name LIKE '%" + keyword + "%' OR p_type LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%')";
+
+        conf.displayData(sql, table);              
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered

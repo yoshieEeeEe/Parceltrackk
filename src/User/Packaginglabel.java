@@ -8,6 +8,7 @@ package User;
 import Main.Login;
 import config.Session;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,17 +29,38 @@ public class Packaginglabel extends javax.swing.JFrame {
         }
         initComponents();
         
-    jTextField1.setText(id);   
-    jTextField4.setText(sender);   
-    jTextField2.setText(receiver); 
-    jTextField3.setText(weight); 
-
-    jTextField1.setEditable(false);
-    jTextField2.setEditable(false);
-    jTextField3.setEditable(false);
-    jTextField4.setEditable(false);
+    jLabel13.setText(id);      
+    jLabel9.setText(sender);    
+    jLabel4.setText(receiver);  
+    jLabel11.setText(weight);
     }
+        private void printRecord(JPanel panel) {
+        java.awt.print.PrinterJob printerJob = java.awt.print.PrinterJob.getPrinterJob();
+        printerJob.setJobName("Print Label");
 
+        printerJob.setPrintable(new java.awt.print.Printable() {
+            @Override
+            public int print(java.awt.Graphics graphics, java.awt.print.PageFormat pageFormat, int pageIndex) {
+                if (pageIndex > 0) return java.awt.print.Printable.NO_SUCH_PAGE;
+
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) graphics;
+                g2.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                // Scale to fit the page
+                g2.scale(0.7, 0.7); 
+
+                panel.printAll(g2);
+                return java.awt.print.Printable.PAGE_EXISTS;
+            }
+        });
+
+        if (printerJob.printDialog()) {
+            try {
+                printerJob.print();
+            } catch (java.awt.print.PrinterException ex) {
+                JOptionPane.showMessageDialog(null, "Print Error: " + ex.getMessage());
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,19 +73,18 @@ public class Packaginglabel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,18 +100,10 @@ public class Packaginglabel extends javax.swing.JFrame {
         jLabel2.setText("APPROVED BY: Adrian A. Jurilla");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 240, 30));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 30, 30));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel3.setText("TO:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 30, 30));
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 210, 30));
-
-        jLabel4.setText("PARCEL TRACKING SYSTEM");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 210, 30));
+        jLabel3.setText("RECEIVER_ADDRESS:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 180, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 210, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Packaging.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 390, 210));
@@ -99,31 +112,24 @@ public class Packaginglabel extends javax.swing.JFrame {
         jLabel6.setText("DETAIL:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 80, 20));
 
-        jLabel7.setText("WEIGTH:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 70, 30));
+        jLabel7.setText("CLICK TO PRINT");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel8.setText("PARCEL ID:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 20));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("PARCEL TRACKING SYSTEM");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 210, 30));
-
-        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 30, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 190, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel10.setText("FROM:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 60, 30));
-
-        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 210, 30));
+        jLabel10.setText("SENDER_ADDRESS:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 160, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back (2).png"))); // NOI18N
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,7 +137,12 @@ public class Packaginglabel extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 320, 80));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 320, 80));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 60, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 60, 20));
+
+        jLabel14.setText("WEIGHT:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 70, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 590));
 
@@ -139,16 +150,33 @@ public class Packaginglabel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
       
         riderdashboard Back = new riderdashboard();
         Back.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        savePanelAsImage(jPanel1);
+}
+
+private void savePanelAsImage(JPanel panel) {
+    java.awt.image.BufferedImage image = new java.awt.image.BufferedImage(
+            panel.getWidth(), panel.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
+    
+    panel.paint(image.getGraphics());
+    try {
+        java.io.File outputfile = new java.io.File("ParcelLabel.png");
+        javax.imageio.ImageIO.write(image, "png", outputfile);
+        JOptionPane.showMessageDialog(null, "Label saved as Image! You can now drag this into Word.");
+        
+        // Optional: Open the image immediately
+        java.awt.Desktop.getDesktop().open(outputfile);
+    } catch (java.io.IOException e) {
+        e.printStackTrace();
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -188,7 +216,10 @@ public class Packaginglabel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -198,9 +229,5 @@ public class Packaginglabel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

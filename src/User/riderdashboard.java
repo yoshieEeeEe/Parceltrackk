@@ -60,15 +60,13 @@ public class riderdashboard extends javax.swing.JFrame {
         SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        Send = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        Send = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +118,48 @@ public class riderdashboard extends javax.swing.JFrame {
 
         jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 120, 40));
 
+        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel4.setText("PROFILE");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 60));
+
+        Send.setBackground(new java.awt.Color(96, 165, 250));
+        Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SendMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SendMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SendMouseExited(evt);
+            }
+        });
+        Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel2.setText("UPDATE PARCEL");
+        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 170, 60));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 980, 80));
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 153));
@@ -139,70 +179,7 @@ public class riderdashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 650, 400));
-
-        Send.setBackground(new java.awt.Color(96, 165, 250));
-        Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Send.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SendMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SendMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SendMouseExited(evt);
-            }
-        });
-        Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("UPDATE PARCEL");
-        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jPanel8.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 190, 60));
-
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel4.setText("PROFILE");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 190, 60));
-
-        jPanel7.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
-            }
-        });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setText("PACKAGE LABEL");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 190, 60));
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 840, 350));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -265,25 +242,47 @@ public class riderdashboard extends javax.swing.JFrame {
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
 
-        int row = table.getSelectedRow(); 
-            if (row == -1) return;
+    int row = table.getSelectedRow(); 
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a parcel from the table first!");
+            return;
+        }
 
-            String currentStatus = table.getValueAt(row, 5).toString();
+        try {
+            // 1. Get data from the table
+            // Note: Check if these column numbers match your table exactly!
             String pId = table.getValueAt(row, 0).toString();
-            
+            String weight = table.getValueAt(row, 2).toString();
+            String sender = table.getValueAt(row, 3).toString();
+            String receiver = table.getValueAt(row, 4).toString();
+            String currentStatus = table.getValueAt(row, 5).toString();
+
+            // 2. Redirection Logic
             if (currentStatus.equalsIgnoreCase("Delivered")) {
+                // Create the frame and pass data
+                Packaginglabel label = new Packaginglabel(pId, sender, receiver, weight);
+                label.setVisible(true);
+                this.dispose();
+            } else {
+                int confirm = JOptionPane.showConfirmDialog(this, 
+                    "Mark as Delivered and generate label?", "Confirm", JOptionPane.YES_NO_OPTION);
 
-                JOptionPane.showMessageDialog(this, "This parcel is already Delivered. You cannot change it!");
-                return; 
+                if (confirm == JOptionPane.YES_OPTION) {
+                    config conf = new config();
+                    String sql = "UPDATE tbl_parcel SET p_status = 'Delivered' WHERE p_id = ?";
+                    // Use the method that accepts the parameters for your SQL
+                    conf.addRecord(sql, pId); 
+
+                    Packaginglabel label = new Packaginglabel(pId, sender, receiver, weight);
+                    label.setVisible(true);
+                    this.dispose();
+                }
             }
-
-            String nextStatus = currentStatus.equalsIgnoreCase("Pending") ? "On going" : "Delivered";
-
-            config conf = new config();
-            String sql = "UPDATE tbl_parcel SET p_status = ? WHERE p_id = ?";
-            conf.addRecord(sql, nextStatus, pId); 
-
-            displayParcels();
+        } catch (Exception e) {
+            // This will tell you EXACTLY what the error is in the output console
+            System.out.println("Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+        }
     
     }//GEN-LAST:event_SendMouseClicked
 
@@ -308,30 +307,6 @@ public class riderdashboard extends javax.swing.JFrame {
         Home1.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
-
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        int row = table.getSelectedRow(); 
-
-            if (row == -1) {
-                JOptionPane.showMessageDialog(this, "Please select a parcel first!");
-                return;
-            }
-            String id = table.getValueAt(row, 0).toString();
-            String weight = table.getValueAt(row, 2).toString();
-            String sender = table.getValueAt(row, 3).toString();
-            String receiver = table.getValueAt(row, 4).toString();
-
-            Packaginglabel label = new Packaginglabel(id, sender, receiver, weight);
-            label.setVisible(true);
-    }//GEN-LAST:event_jPanel7MouseClicked
-
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        resetColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseEntered
-
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        setColor(jPanel7);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseExited
 
     /**
      * @param args the command line arguments
@@ -376,13 +351,11 @@ public class riderdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

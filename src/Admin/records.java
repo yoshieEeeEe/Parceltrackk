@@ -157,7 +157,7 @@ public class records extends javax.swing.JFrame {
         jLabel4.setText("BACK");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 210, 70));
+        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 220, 70));
 
         addbtn.setBackground(new java.awt.Color(96, 165, 250));
         addbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -178,7 +178,7 @@ public class records extends javax.swing.JFrame {
         jLabel6.setText("ADD");
         addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
-        jPanel8.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 210, 70));
+        jPanel8.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 220, 70));
 
         jPanel10.setBackground(new java.awt.Color(96, 165, 250));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -197,9 +197,9 @@ public class records extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel7.setText("UPDATE");
-        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 210, 70));
+        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 220, 70));
 
         jPanel12.setBackground(new java.awt.Color(96, 165, 250));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -217,10 +217,10 @@ public class records extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel9.setText("Delete");
-        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        jLabel9.setText("DELETE");
+        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jPanel8.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 210, 70));
+        jPanel8.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 220, 70));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -260,9 +260,9 @@ public class records extends javax.swing.JFrame {
     }//GEN-LAST:event_addbtnMouseExited
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-    int row = table.getSelectedRow();
+int row = table.getSelectedRow();
     if (row != -1) {
-
+        // 1. Get data from the selected row
         int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
         int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
         String type = table.getValueAt(row, 2).toString();
@@ -271,8 +271,7 @@ public class records extends javax.swing.JFrame {
         String receiver = table.getValueAt(row, 5).toString();
         String status = table.getValueAt(row, 6).toString();
 
-
-        Update up = new Update(p_id, a_id, type, weight, sender, receiver, status);
+        Updateparcel up = new Updateparcel(p_id, a_id, type, weight, sender, receiver, status);
         up.setVisible(true);
         this.dispose();
 
