@@ -35,11 +35,13 @@ public class userdashboard extends javax.swing.JFrame {
         displayParcels();
     }
     void displayParcels() {
+       
         config cn = new config();
-        int currentUserId = Session.getUserId();
 
-        // This query pulls EVERY parcel where a_id matches the logged-in user
-        String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
+        int currentUserId = Session.getUserId();
+        String sql = "SELECT p_id AS 'ID', p_name AS 'Name', p_type AS 'Type', " +
+                     "p_weight AS 'Weight', sender_address AS 'Sender', " +
+                     "receiver_address AS 'Receiver', p_status AS 'Status' " +
                      "FROM tbl_parcel " +
                      "WHERE a_id = '" + currentUserId + "' " + 
                      "ORDER BY p_id DESC"; 
@@ -60,8 +62,6 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        addbtn = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         updates = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -103,27 +103,6 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        addbtn.setBackground(new java.awt.Color(96, 165, 250));
-        addbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addbtnMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addbtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                addbtnMouseExited(evt);
-            }
-        });
-        addbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel6.setText("ADD");
-        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, 40));
-
         updates.setBackground(new java.awt.Color(96, 165, 250));
         updates.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         updates.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,7 +132,7 @@ public class userdashboard extends javax.swing.JFrame {
 
         updates.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 120, 40));
 
-        jPanel3.add(updates, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 130, 40));
+        jPanel3.add(updates, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 130, 40));
 
         jPanel12.setBackground(new java.awt.Color(96, 165, 250));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -174,7 +153,7 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel9.setText("DELETE");
         jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 40));
+        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 120, 40));
 
         SearchText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,40 +290,31 @@ public class userdashboard extends javax.swing.JFrame {
     public void resetColor(JPanel p2){
         p2.setBackground(new Color(0,102,153));
     }
-    private void addbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseClicked
-        addparcel addbtn = new addparcel ();
-        addbtn.setVisible(true);
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseClicked
-
-    private void addbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseEntered
-        resetColor(addbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseEntered
-
-    private void addbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseExited
-        setColor(addbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseExited
-
     private void updatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseClicked
-    int row = table.getSelectedRow();
-    if (row != -1) {
+        int row = table.getSelectedRow();
+        if (row != -1) {
+            try {
 
-        int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
-        int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
-        String type = table.getValueAt(row, 2).toString();
-        String weight = table.getValueAt(row, 3).toString();
-        String sender = table.getValueAt(row, 4).toString();
-        String receiver = table.getValueAt(row, 5).toString();
-        String status = table.getValueAt(row, 6).toString();
+                int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                int a_id = Session.getUserId(); 
 
+                String name     = table.getValueAt(row, 1).toString(); 
+                String type     = table.getValueAt(row, 2).toString();
+                String weight   = table.getValueAt(row, 3).toString();
+                String sender   = table.getValueAt(row, 4).toString();
+                String receiver = table.getValueAt(row, 5).toString();
+                String status   = table.getValueAt(row, 6).toString();
 
-        Update up = new Update(p_id, a_id, type, weight, sender, receiver, status);
-        up.setVisible(true);
-        this.dispose();
+                Update up = new Update(p_id, a_id, name, type, weight, sender, receiver, status);
+                up.setVisible(true);
+                this.dispose();
 
-    } else {
-        JOptionPane.showMessageDialog(null, "Please select a parcel from the table first!", "No Selection", JOptionPane.WARNING_MESSAGE);
-    }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Data Error: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a parcel from the table first!", "No Selection", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_updatesMouseClicked
 
     private void updatesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseEntered
@@ -356,23 +326,35 @@ public class userdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_updatesMouseExited
 
     private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
-        int row = table.getSelectedRow();
+    int row = table.getSelectedRow();
+
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Select a user first!");
+            JOptionPane.showMessageDialog(this, "Select a parcel first!");
             return;
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this parcel?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+
+        int confirm = JOptionPane.showConfirmDialog(this, 
+                "Are you sure you want to delete this parcel?", 
+                "Confirm Delete", 
+                JOptionPane.YES_NO_OPTION);
+
         if (confirm != JOptionPane.YES_OPTION) return;
-        int id = Integer.parseInt(table.getValueAt(row, 0).toString());
 
-        config con = new config();
-        String sql = "DELETE FROM tbl_parcel WHERE p_id = ?";
+        try {
+            int id = Integer.parseInt(table.getValueAt(row, 0).toString());
 
-        con.addRecord(sql, id);
+            config con = new config();
+            String sql = "DELETE FROM tbl_parcel WHERE p_id = ?";
 
-        JOptionPane.showMessageDialog(this, "Parcel deleted successfully!");
-        displayParcels();
+            con.addRecord(sql, id); 
+
+            JOptionPane.showMessageDialog(this, "Parcel deleted successfully!");
+            displayParcels(); 
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_jPanel12MouseClicked
 
     private void jPanel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseEntered
@@ -398,12 +380,12 @@ public class userdashboard extends javax.swing.JFrame {
             return;
         }
 
-        // Still filtering by currentUserId so they only search THEIR data
+        // This ensures your search still respects the logged-in Account ID (a_id)
         String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = '" + currentUserId + "' " +
+                     "FROM tbl_parcel WHERE a_id = " + currentUserId + " " +
                      "AND (p_name LIKE '%" + keyword + "%' OR p_type LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%')";
 
-        conf.displayData(sql, table);              
+        conf.displayData(sql, table); 
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -506,14 +488,12 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JTextField SearchText;
     private javax.swing.JPanel Select;
     private javax.swing.JPanel Send;
-    private javax.swing.JPanel addbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

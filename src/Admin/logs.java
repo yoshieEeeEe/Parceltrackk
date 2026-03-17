@@ -5,6 +5,10 @@
  */
 package Admin;
 
+import Main.Login;
+import config.Session;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dell
@@ -15,6 +19,13 @@ public class logs extends javax.swing.JFrame {
      * Creates new form logs
      */
     public logs() {
+               
+        if (Session.getUserId() == 0) { 
+        JOptionPane.showMessageDialog(null, "Login Required!");
+        new Login().setVisible(true);
+        this.dispose();
+        return;
+                }
         initComponents();
         displayLogs();
 
@@ -58,6 +69,9 @@ public class logs extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 100));
 
@@ -93,6 +107,10 @@ public class logs extends javax.swing.JFrame {
     ds.setVisible(true);
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseEntered
 
     /**
      * @param args the command line arguments

@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -22,7 +22,7 @@ public class Updateparcel extends javax.swing.JFrame {
      * Creates new form Updateparcel
      */
     int parcelId;
-    public Updateparcel(int p_id, int a_id, String type, String weight, String sender, String receiver, String status) {
+    public Updateparcel(int p_id, int a_id, String name, String type, String weight, String sender, String receiver, String status) {
                
         if (Session.getUserId() == 0) { 
         JOptionPane.showMessageDialog(null, "Login Required!");
@@ -32,12 +32,13 @@ public class Updateparcel extends javax.swing.JFrame {
                 }
         initComponents();
                
-        parcelId = p_id;
-        
-        Type.getText();   
-        Weight.getText();
-        Sender.getText(); 
-        Receiver.getText(); 
+    this.parcelId = p_id;
+
+        Name.setText(name);
+        Type.setText(type);
+        Weight.setText(weight);
+        Sender.setText(sender);
+        Receiver.setText(receiver);
     }
 
     /**
@@ -253,7 +254,7 @@ public class Updateparcel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Updateparcel(0, 0, "", "", "", "", "").setVisible(true);
+                new Updateparcel(0, 0, "", "", "", "", "", "").setVisible(true);
             }
         });
     }

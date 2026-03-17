@@ -260,21 +260,27 @@ public class records extends javax.swing.JFrame {
     }//GEN-LAST:event_addbtnMouseExited
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-int row = table.getSelectedRow();
+    int row = table.getSelectedRow();
     if (row != -1) {
-        // 1. Get data from the selected row
-        int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
-        int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
-        String type = table.getValueAt(row, 2).toString();
-        String weight = table.getValueAt(row, 3).toString();
-        String sender = table.getValueAt(row, 4).toString();
-        String receiver = table.getValueAt(row, 5).toString();
-        String status = table.getValueAt(row, 6).toString();
+        try {
 
-        Updateparcel up = new Updateparcel(p_id, a_id, type, weight, sender, receiver, status);
-        up.setVisible(true);
-        this.dispose();
+            int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
 
+            String name     = table.getValueAt(row, 2).toString(); 
+            String type     = table.getValueAt(row, 3).toString();
+            String weight   = table.getValueAt(row, 4).toString();
+            String sender   = table.getValueAt(row, 5).toString();
+            String receiver = table.getValueAt(row, 6).toString();
+            String status   = table.getValueAt(row, 7).toString();
+
+            Updateparcel up = new Updateparcel(p_id, a_id, name, type, weight, sender, receiver, status);
+            up.setVisible(true);
+            this.dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
     } else {
         JOptionPane.showMessageDialog(null, "Please select a parcel from the table first!", "No Selection", JOptionPane.WARNING_MESSAGE);
     }

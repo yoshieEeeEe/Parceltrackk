@@ -23,15 +23,19 @@ public class Update extends javax.swing.JFrame {
      */
     
     int parcelId;
-    public Update(int p_id, int a_id, String type, String weight, String sender, String receiver, String status) {
+    public Update(int p_id, int a_id, String name, String type, String weight, String sender, String receiver, String status) {
         initComponents();
         
         parcelId = p_id;
         
-        Type.getText();   
-        Weight.getText();
-        Sender.getText(); 
-        Receiver.getText(); 
+    this.parcelId = p_id;
+        
+        // Use setText() to populate the fields with the passed data
+        Name.setText(name);   
+        Type.setText(type);   
+        Weight.setText(weight);
+        Sender.setText(sender); 
+        Receiver.setText(receiver); 
 
     }
 
@@ -263,7 +267,7 @@ public class Update extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Update(0, 0, "", "", "", "", "").setVisible(true);
+                new Update(0, 0, "", "", "", "", "", "").setVisible(true);
             }
         });
     }
