@@ -24,6 +24,13 @@ public class riders extends javax.swing.JFrame {
     public String selectedPid;
 
     public riders() {
+                
+        if (Session.getUserId() == 0) { 
+        JOptionPane.showMessageDialog(null, "Login Required!");
+        new Login().setVisible(true);
+        this.dispose();
+        return; 
+         }
         initComponents();
         displayRiders();
     }
@@ -259,11 +266,16 @@ public class riders extends javax.swing.JFrame {
 if (confirm == JOptionPane.YES_OPTION) {
     try {
         config con = new config();
+        
+        String sqlUpdate = "UPDATE tbl_parcel SET rider_id = ?, p_status = 'In Transit' WHERE p_id = ?";
+        con.addRecord(sqlUpdate, selectedRiderId, selectedPid);
 
-        String sql = "UPDATE tbl_parcel SET rider_id = ?, p_status = 'In Transit' WHERE p_id = ?";
-        con.addRecord(sql, selectedRiderId, selectedPid);
+        String adminId = String.valueOf(Session.getUserId()); 
+        String sqlInsert = "INSERT INTO tbl_rider_transaction (p_id, ride_id, admin_id, status) VALUES (?, ?, ?, 'In Transit')";
+        
+        con.addRecord(sqlInsert, selectedPid, selectedRiderId, adminId);
 
-        JOptionPane.showMessageDialog(this, "Rider assigned successfully!");
+        JOptionPane.showMessageDialog(this, "Rider assigned and transaction recorded!");
 
         new Assignment().setVisible(true);
         this.dispose();
