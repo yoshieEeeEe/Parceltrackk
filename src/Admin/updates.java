@@ -78,7 +78,7 @@ public class updates extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("UPDATE");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 170, 60));
@@ -92,29 +92,29 @@ public class updates extends javax.swing.JFrame {
         jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Name:");
         jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
         jPanel8.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 270, -1));
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Email:");
         jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
         jPanel8.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 270, -1));
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setText("Password:");
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("Type:");
         jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        jPanel15.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel15.setBackground(new java.awt.Color(0, 102, 153));
         jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,7 +129,8 @@ public class updates extends javax.swing.JFrame {
         });
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("UPDATE");
         jPanel15.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
@@ -137,7 +138,7 @@ public class updates extends javax.swing.JFrame {
         jPanel8.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 270, -1));
         jPanel8.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 270, -1));
 
-        jPanel16.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel16.setBackground(new java.awt.Color(0, 102, 153));
         jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,7 +153,8 @@ public class updates extends javax.swing.JFrame {
         });
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
         jLabel17.setText("BACK");
         jPanel16.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 60, -1));
 
@@ -175,12 +177,13 @@ public class updates extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
+    
     private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
         config con = new config();
 

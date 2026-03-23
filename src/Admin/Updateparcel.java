@@ -22,7 +22,7 @@ public class Updateparcel extends javax.swing.JFrame {
      * Creates new form Updateparcel
      */
     int parcelId;
-    public Updateparcel(int p_id, int a_id, String name, String type, String weight, String sender, String receiver, String status) {
+    public Updateparcel(int p_id, int a_id, String name, String type, String weight, String amount, String sName, String sAddress, String rName, String rAddress, String status) {
                
         if (Session.getUserId() == 0) { 
         JOptionPane.showMessageDialog(null, "Login Required!");
@@ -32,15 +32,18 @@ public class Updateparcel extends javax.swing.JFrame {
                 }
         initComponents();
                
-    this.parcelId = p_id;
+        this.parcelId = p_id;
 
-        Name.setText(name);
-        Type.setText(type);
-        Weight.setText(weight);
-        Sender.setText(sender);
-        Receiver.setText(receiver);
+    SenderName.setText(Session.getName());
+    SenderName.setEditable(false); 
+    ParcelName.setText(name != null ? name.trim() : "");
+    ParcelType.setText(type != null ? type.trim() : "");
+    ParcelWeight.setText(weight != null ? weight.trim() : "");     
+    ParcelAmount.setText(amount != null ? amount.trim() : ""); 
+    Sender.setText(sAddress != null ? sAddress.trim() : ""); 
+    ReceiverName.setText(rName != null ? rName.trim() : "");  
+    Receiver.setText(rAddress != null ? rAddress.trim() : "");
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,57 +56,67 @@ public class Updateparcel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        Weight = new javax.swing.JTextField();
+        ParcelAmount = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Sender = new javax.swing.JTextField();
+        SenderName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         registerpanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        Name = new javax.swing.JTextField();
+        ParcelName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Receiver = new javax.swing.JTextField();
+        ReceiverName = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        Type = new javax.swing.JTextField();
+        ParcelType = new javax.swing.JTextField();
+        Receiver = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        Sender = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        ParcelWeight = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("ParcelWeight:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+        jLabel5.setText("ParcelAmmount:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
 
-        Weight.addActionListener(new java.awt.event.ActionListener() {
+        ParcelAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WeightActionPerformed(evt);
+                ParcelAmountActionPerformed(evt);
             }
         });
-        jPanel3.add(Weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 270, -1));
+        jPanel3.add(ParcelAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 270, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("SenderAddress:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        jLabel6.setText("SenderName:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
-        Sender.setText(" ");
-        Sender.addActionListener(new java.awt.event.ActionListener() {
+        SenderName.setText(" ");
+        SenderName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SenderActionPerformed(evt);
+                SenderNameActionPerformed(evt);
             }
         });
-        jPanel3.add(Sender, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 270, -1));
+        jPanel3.add(SenderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 270, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setText("ReceiverAddress:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+        jLabel7.setText("ReceiverName:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
-        registerpanel.setBackground(new java.awt.Color(96, 165, 250));
+        registerpanel.setBackground(new java.awt.Color(0, 102, 153));
         registerpanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registerpanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,27 +131,29 @@ public class Updateparcel extends javax.swing.JFrame {
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("UPDATE");
         registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 140, 40));
-        jPanel3.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 270, -1));
+        jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 130, 40));
+        jPanel3.add(ParcelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 270, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("ParcelName:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("UPDATE");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 90));
-        jPanel3.add(Receiver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 270, -1));
+        jPanel3.add(ReceiverName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 270, -1));
 
-        jPanel2.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,73 +162,107 @@ public class Updateparcel extends javax.swing.JFrame {
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("BACK");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 110, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 610, 110, 40));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("ParcelType:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
-        jPanel3.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 270, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        jPanel3.add(ParcelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 270, -1));
+        jPanel3.add(Receiver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 270, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 520));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("ReceiverAddress:");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        Sender.setText(" ");
+        Sender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SenderActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Sender, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 270, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setText("SenderAddress:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        ParcelWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParcelWeightActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ParcelWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 270, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText("ParcelWeight:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 680));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+        public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
-    private void WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightActionPerformed
+    
+    private void ParcelAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParcelAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_WeightActionPerformed
+    }//GEN-LAST:event_ParcelAmountActionPerformed
 
-    private void SenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenderActionPerformed
+    private void SenderNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenderNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SenderActionPerformed
+    }//GEN-LAST:event_SenderNameActionPerformed
 
     private void registerpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseClicked
-        config con = new config();
+config con = new config();
 
-        String sql = "UPDATE tbl_parcel SET p_name=?, p_type=?, p_weight=?, sender_address=?, receiver_address=?, p_status=? WHERE p_id=?";
+        String sql = "UPDATE tbl_parcel SET p_name=?, p_type=?, p_weight=?, p_amount=?, s_name=?, s_address=?, r_name=?, r_address=?, p_status=? WHERE p_id=?";
 
-        con.addRecord(sql,
-            Name.getText(),
-            Type.getText(),
-            Weight.getText(),
-            Sender.getText(),
-            Receiver.getText(),
-            "Pending",
-            parcelId
-        );
+        try {
+            con.addRecord(sql,
+                ParcelName.getText().trim(),           
+                ParcelType.getText().trim(),           
+                ParcelWeight.getText().trim(),       
+                ParcelAmount.getText().trim(),  
+                SenderName.getText().trim(),     
+                Sender.getText().trim(),         
+                ReceiverName.getText().trim(),   
+                Receiver.getText().trim(),       
+                "Pending", 
+                parcelId                                 
+            );
 
-        JOptionPane.showMessageDialog(null, "RECORD UPDATED!");
-        records usd = new records();
-        usd.setVisible(true);
-        this.dispose();
+            JOptionPane.showMessageDialog(null, "RECORD UPDATED!");
+            records usd = new records();
+            usd.setVisible(true);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update Error: " + e.getMessage());
+        }                                         
+                          
+    
     }//GEN-LAST:event_registerpanelMouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        records Back = new records();
-        Back.setVisible(true);
-        dispose();        // TODO add your handling code here:
+
+        new records().setVisible(true);
+        dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void registerpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseEntered
@@ -223,6 +272,14 @@ public class Updateparcel extends javax.swing.JFrame {
     private void registerpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerpanelMouseExited
         setColor(registerpanel);     // TODO add your handling code here:
     }//GEN-LAST:event_registerpanelMouseExited
+
+    private void SenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SenderActionPerformed
+
+    private void ParcelWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParcelWeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ParcelWeightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,18 +311,24 @@ public class Updateparcel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Updateparcel(0, 0, "", "", "", "", "", "").setVisible(true);
+                new Updateparcel(0, 0, "", "", "", "", "", "","","","").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Name;
+    private javax.swing.JTextField ParcelAmount;
+    private javax.swing.JTextField ParcelName;
+    private javax.swing.JTextField ParcelType;
+    private javax.swing.JTextField ParcelWeight;
     private javax.swing.JTextField Receiver;
+    private javax.swing.JTextField ReceiverName;
     private javax.swing.JTextField Sender;
-    private javax.swing.JTextField Type;
-    private javax.swing.JTextField Weight;
+    private javax.swing.JTextField SenderName;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

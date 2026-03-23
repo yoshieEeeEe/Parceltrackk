@@ -3,46 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package User;
+package Admin;
 
 import Main.Login;
-import config.Session;
 import config.config;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import config.Session;
 /**
  *
  * @author Dell
  */
-public class Riders extends javax.swing.JFrame {
+public class riders extends javax.swing.JFrame {
 
     /**
-     * Creates new form Riders
+     * Creates new form riders
      */
-    public String parcel_id;
-    public Riders() {
+    public String parcel_id; // Global variable
+
+    public riders() {
+        initComponents();
+        displayRiders();
+    }
+
+    public riders(String pid) {
         
-        if (Session.getUserId() == 0) { 
+               if (Session.getUserId() == 0) { 
         JOptionPane.showMessageDialog(null, "Login Required!");
         new Login().setVisible(true);
         this.dispose();
         return; 
         }
         initComponents();
+        this.parcel_id = pid; 
         displayRiders();
     }
-    public Riders(String pid) {
-        initComponents();
-        this.parcel_id = pid; 
-        displayRiders();     
-    }
     public void displayRiders() {
-    config cn = new config();
-    String sql = "SELECT a_id, name, email, status FROM tbl_accounts WHERE type = 'Rider'";
-    cn.displayData(sql, table);
-}
+        config conf = new config();
+        String sql = "SELECT a.a_id AS 'ID', a.name AS 'Rider Name', a.email AS 'Email', "
+                   + "(SELECT COUNT(*) FROM tbl_parcel p WHERE p.a_id = a.a_id AND p.p_status IN ('In Transit', 'On going')) AS 'Active Parcels' "
+                   + "FROM tbl_accounts a WHERE a.type = 'Rider' AND a.status = 'Active'";
+        conf.displayData(sql, table);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,10 +77,10 @@ public class Riders extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Rider");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 100, 60));
+        jLabel1.setText("RIDERS");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 160, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,7 +103,7 @@ public class Riders extends javax.swing.JFrame {
         });
         jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 350, 40));
 
-        jPanel13.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel13.setBackground(new java.awt.Color(0, 102, 153));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,13 +118,14 @@ public class Riders extends javax.swing.JFrame {
         });
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("SEARCH");
         jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 40));
+        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 110, 40));
 
-        Send.setBackground(new java.awt.Color(96, 165, 250));
+        Send.setBackground(new java.awt.Color(0, 102, 153));
         Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,7 +140,8 @@ public class Riders extends javax.swing.JFrame {
         });
         Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("SELECT RIDER");
         Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
@@ -163,7 +168,7 @@ public class Riders extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 800, 400));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,35 +184,45 @@ public class Riders extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+         public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
+    
+    
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+
+        Assignment ds = new Assignment();
+        ds.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseClicked
+
     private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTextActionPerformed
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
-        config conf = new config();
-            String keyword = SearchText.getText().trim();
+    config conf = new config();
+        String keyword = SearchText.getText().trim();
 
-            if (keyword.isEmpty()) {
-                displayRiders();
-                return;
-            }
+        if (keyword.isEmpty()) {
+            displayRiders();
+            return;
+        }
 
+        String sql = "SELECT a_id AS 'ID', name AS 'Rider Name', email AS 'Email', "
+                   + "(SELECT COUNT(*) FROM tbl_parcel WHERE a_id = a.a_id AND p_status != 'Delivered') AS 'Active Parcels' "
+                   + "FROM tbl_accounts a "
+                   + "WHERE type = 'Rider' AND status = 'Active' AND (name LIKE ? OR a_id LIKE ?)";
 
-            String sql = "SELECT a_id, name, email, status FROM tbl_accounts " +
-                         "WHERE type = 'Rider' AND (name LIKE ? OR a_id LIKE ?)";
+        conf.displayData(sql, table, "%" + keyword + "%", "%" + keyword + "%");
 
-            conf.displayData(sql, table, "%" + keyword + "%", "%" + keyword + "%");
-
-            if (table.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No matching riders found.");
-                displayRiders();
+        if (table.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "No matching riders found.");
+            displayRiders();
         }
     }//GEN-LAST:event_jPanel13MouseClicked
 
@@ -220,20 +235,37 @@ public class Riders extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel13MouseExited
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
-        int row = table.getSelectedRow(); 
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a Rider first!");
-            return;
-        }
-        
-        String riderId = table.getValueAt(row, 0).toString(); 
+
+        int row = table.getSelectedRow();
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a Rider first!");
+        return;
+    }
+
+
+    if (this.parcel_id == null || this.parcel_id.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Error: Parcel ID is missing. Cannot assign rider.");
+        return;
+    }
+
+    try {
         config conf = new config();
-        String sql = "UPDATE tbl_parcel SET a_id = ?, p_status = 'On going' WHERE p_id = ?";
-        conf.addRecord(sql, riderId, parcel_id); 
-        
-        JOptionPane.showMessageDialog(this, "Parcel assigned to Rider successfully!");
-        new userdashboard().setVisible(true);
-        this.dispose();           
+        String riderId = table.getValueAt(row, 0).toString(); 
+        String pId = this.parcel_id; 
+        String updateParcelSql = "UPDATE tbl_parcel SET a_id = ?, p_status = 'In Transit' WHERE p_id = ?";
+        conf.addRecord(updateParcelSql, riderId, pId);
+        int adminId = Session.getUserId();        
+        String insertSql = "INSERT INTO tbl_rider_transaction (p_id, ride_id, admin_id, status) VALUES (?, ?, ?, 'In Transit')";
+        conf.addRecord(insertSql, pId, riderId, String.valueOf(adminId));
+
+        JOptionPane.showMessageDialog(this, "Success! Rider assigned to Parcel #" + pId);
+
+        new Assignment().setVisible(true);
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Database Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_SendMouseClicked
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
@@ -243,13 +275,6 @@ public class Riders extends javax.swing.JFrame {
     private void SendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseExited
         setColor(Send);
     }//GEN-LAST:event_SendMouseExited
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-            
-    userdashboard ds = new userdashboard();
-    ds.setVisible(true);
-    this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,20 +293,20 @@ public class Riders extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(riders.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Riders().setVisible(true);
+                new riders().setVisible(true);
             }
         });
     }

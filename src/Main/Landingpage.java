@@ -77,7 +77,7 @@ public class Landingpage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 790, 60));
 
-        Loginbtn.setBackground(new java.awt.Color(96, 165, 250));
+        Loginbtn.setBackground(new java.awt.Color(0, 102, 153));
         Loginbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Loginbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,7 +92,8 @@ public class Landingpage extends javax.swing.JFrame {
         });
         Loginbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("CONTINUE...");
         Loginbtn.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 130, 20));
 
@@ -140,12 +141,13 @@ public class Landingpage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
+    
     private void LoginbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbtnMouseEntered
        resetColor(Loginbtn); // TODO add your handling code here:
     }//GEN-LAST:event_LoginbtnMouseEntered

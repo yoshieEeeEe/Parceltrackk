@@ -39,54 +39,59 @@ public class profile extends javax.swing.JFrame {
         
     }
     private void loadProfile() {
+    Idlbl.setText(String.valueOf(config.Session.getUserId()));
+    Namelbl1.setText(config.Session.getName());
+    Emaillbl1.setText(config.Session.getEmail()); 
+    Typelbl.setText(config.Session.getType());
 
-        Idlbl.setText(String.valueOf(config.Session.getUserId()));
-        Namelbl1.setText(config.Session.getName());
-        Emaillbl1.setText(config.Session.getEmail()); 
-        Typelbl.setText(config.Session.getType());
+    String sql = "SELECT password, image FROM tbl_accounts WHERE a_id = ?";
 
-        String sql = "SELECT password FROM tbl_accounts WHERE a_id = ?";
+    try (java.sql.Connection conn = config.config.connectDB();
+         java.sql.PreparedStatement pst = conn.prepareStatement(sql)) {
 
-        try (java.sql.Connection conn = config.config.connectDB();
-             java.sql.PreparedStatement pst = conn.prepareStatement(sql)) {
+        pst.setInt(1, config.Session.getUserId());
 
-            pst.setInt(1, config.Session.getUserId());
+        try (java.sql.ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) {
+                Emaillbl.setText(rs.getString("password"));
 
-            try (java.sql.ResultSet rs = pst.executeQuery()) {
-                if (rs.next()) {
-                    Emaillbl.setText(rs.getString("password"));
+                String path = rs.getString("image");
+                if (path != null && !path.isEmpty()) {
+                    ImageIcon icon = new ImageIcon(path);
+                    Image img = icon.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
+                    jLabel6.setIcon(new ImageIcon(img));
+                    jLabel6.setText(""); 
                 }
             }
-        } catch (java.sql.SQLException e) {
-            System.out.println("Error loading password: " + e.getMessage());
-            Emaillbl.setText("********");
+        }
+    } catch (java.sql.SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+}
+
+    public void selectImage() {
+        JFileChooser browseImageFile = new JFileChooser();
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String path = selectedImageFile.getAbsolutePath();
+
+            try {
+                config.config conf = new config.config();
+                String sql = "UPDATE tbl_accounts SET image = ? WHERE a_id = ?";
+                conf.addRecord(sql, path, String.valueOf(config.Session.getUserId()));
+
+                loadProfile(); 
+                JOptionPane.showMessageDialog(this, "Profile picture updated!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Save Error: " + e.getMessage());
+            }
         }
     }
-        public void selectImage() {
-            // Leaving this empty makes it go to the system default (usually Documents or Recent)
-            JFileChooser browseImageFile = new JFileChooser();
-
-            // Filter to show only images
-            FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-            browseImageFile.addChoosableFileFilter(fnef);
-
-            int showOpenDialogue = browseImageFile.showOpenDialog(null);
-
-            if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
-                File selectedImageFile = browseImageFile.getSelectedFile();
-                String selectedImagePath = selectedImageFile.getAbsolutePath();
-
-                // Display the image on jLabel6
-                ImageIcon ii = new ImageIcon(selectedImagePath);
-
-                // Resize to fit the label
-                Image image = ii.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
-
-                jLabel6.setIcon(new ImageIcon(image));
-                jLabel6.setText(""); // Clears the "Profile" text
-    
-        }
-        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +158,7 @@ public class profile extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("PROFILE");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 190, 30));
@@ -178,7 +183,7 @@ public class profile extends javax.swing.JFrame {
         jLabel5.setText("User Status:");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 110, 20));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 23)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 23)); // NOI18N
         jLabel1.setText("ACCOUNT SETTINGS");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 250, 30));
 
@@ -226,7 +231,7 @@ public class profile extends javax.swing.JFrame {
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 230, 210));
 
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,16 +246,17 @@ public class profile extends javax.swing.JFrame {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("EDIT");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 120, 40));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 130, 40));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Buildings.png"))); // NOI18N
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 50, 770, 420));
 
-        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel10.setBackground(new java.awt.Color(0, 102, 153));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,13 +271,14 @@ public class profile extends javax.swing.JFrame {
         });
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("BACK");
         jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 100, 40));
 
-        jPanel9.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel9.setBackground(new java.awt.Color(0, 102, 153));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,7 +293,8 @@ public class profile extends javax.swing.JFrame {
         });
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("LOG OUT");
         jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
@@ -299,13 +307,14 @@ public class profile extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-            public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+         public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
+    
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
 
     }//GEN-LAST:event_HomeMouseClicked
@@ -376,14 +385,13 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel10MouseExited
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-// 1. Get current values to show as defaults in the input boxes
+
     String currentName = Namelbl1.getText();
     String currentEmail = Emaillbl1.getText();
-    String currentPass = Emaillbl.getText(); // FIX: Changed .setText() to .getText()
+    String currentPass = Emaillbl.getText();
 
-    // 2. Open input dialogs for the user to type new info
     String newName = JOptionPane.showInputDialog(this, "Update Name:", currentName);
-    if (newName == null) return; // User clicked cancel
+    if (newName == null) return; 
 
     String newEmail = JOptionPane.showInputDialog(this, "Update Email:", currentEmail);
     if (newEmail == null) return;
@@ -391,7 +399,6 @@ public class profile extends javax.swing.JFrame {
     String newPass = JOptionPane.showInputDialog(this, "Update Password:", currentPass);
     if (newPass == null) return;
 
-    // 3. Validation: Ensure no fields are empty
     if (newName.trim().isEmpty() || newEmail.trim().isEmpty() || newPass.trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "All fields are required!");
         return;
@@ -411,15 +418,12 @@ public class profile extends javax.swing.JFrame {
         int rowsUpdated = pst.executeUpdate();
         
         if (rowsUpdated > 0) {
-            // 5. Update the Session so other frames (Dashboards) see the new name/email
             config.Session.setSession(config.Session.getUserId(), newName, newEmail, config.Session.getType());
-            
-            // 6. Refresh the current labels
+
             loadProfile();
             
             JOptionPane.showMessageDialog(this, "Profile updated successfully!");
-            
-            // 7. Record to logs
+
             config.config conf = new config.config();
             conf.addRecord("INSERT INTO tbl_logs (a_id, log_event) VALUES (?, ?)", 
                            config.Session.getUserId(), "Updated Profile Info");
@@ -427,7 +431,7 @@ public class profile extends javax.swing.JFrame {
         
     } catch (java.sql.SQLException e) {
         JOptionPane.showMessageDialog(this, "Update Error: " + e.getMessage());
-    }       // TODO add your handling code here:
+    }     
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked

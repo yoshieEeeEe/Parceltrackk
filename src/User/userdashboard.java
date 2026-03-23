@@ -35,13 +35,12 @@ public class userdashboard extends javax.swing.JFrame {
         displayParcels();
     }
     void displayParcels() {
-       
         config cn = new config();
-
         int currentUserId = Session.getUserId();
+
         String sql = "SELECT p_id AS 'ID', p_name AS 'Name', p_type AS 'Type', " +
-                     "p_weight AS 'Weight', sender_address AS 'Sender', " +
-                     "receiver_address AS 'Receiver', p_status AS 'Status' " +
+                     "p_weight AS 'Weight', s_address AS 'Sender', " + 
+                     "r_address AS 'Receiver', p_status AS 'Status' " +
                      "FROM tbl_parcel " +
                      "WHERE a_id = '" + currentUserId + "' " + 
                      "ORDER BY p_id DESC"; 
@@ -78,8 +77,6 @@ public class userdashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Select = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +86,7 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("USERDASHBOARD");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 370, 60));
@@ -103,7 +100,7 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        updates.setBackground(new java.awt.Color(96, 165, 250));
+        updates.setBackground(new java.awt.Color(0, 102, 153));
         updates.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         updates.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,7 +115,8 @@ public class userdashboard extends javax.swing.JFrame {
         });
         updates.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("UPATE");
         updates.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
@@ -134,7 +132,7 @@ public class userdashboard extends javax.swing.JFrame {
 
         jPanel3.add(updates, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 130, 40));
 
-        jPanel12.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel12.setBackground(new java.awt.Color(0, 102, 153));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,7 +147,8 @@ public class userdashboard extends javax.swing.JFrame {
         });
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("DELETE");
         jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
@@ -162,7 +161,7 @@ public class userdashboard extends javax.swing.JFrame {
         });
         jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 340, 40));
 
-        jPanel13.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel13.setBackground(new java.awt.Color(0, 102, 153));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,7 +176,8 @@ public class userdashboard extends javax.swing.JFrame {
         });
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("SEARCH");
         jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
@@ -204,7 +204,7 @@ public class userdashboard extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 680, 380));
 
-        Send.setBackground(new java.awt.Color(96, 165, 250));
+        Send.setBackground(new java.awt.Color(0, 102, 153));
         Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -219,13 +219,14 @@ public class userdashboard extends javax.swing.JFrame {
         });
         Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("SEND PARCELS");
         Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jPanel8.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 90));
 
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -240,32 +241,12 @@ public class userdashboard extends javax.swing.JFrame {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("PROFILE");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 220, 90));
-
-        Select.setBackground(new java.awt.Color(96, 165, 250));
-        Select.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Select.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SelectMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SelectMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SelectMouseExited(evt);
-            }
-        });
-        Select.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
-        jLabel5.setText("SELECT RIDER");
-        Select.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 30));
-
-        jPanel8.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 220, 90));
+        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 220, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -283,18 +264,26 @@ public class userdashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-         public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+        public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
     private void updatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseClicked
-        int row = table.getSelectedRow();
-        if (row != -1) {
-            try {
+    int row = table.getSelectedRow();
 
+        if (row != -1) {
+            // --- NEW STATUS CHECK START ---
+            String status = table.getValueAt(row, 6).toString();
+            if (status.equalsIgnoreCase("On Going") || status.equalsIgnoreCase("Delivered") || status.equalsIgnoreCase("On Transit")) {
+                JOptionPane.showMessageDialog(this, "This parcel is already " + status + " and cannot be modified.");
+                return; // Stops the method here
+            }
+            // --- NEW STATUS CHECK END ---
+
+            try {
                 int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
                 int a_id = Session.getUserId(); 
 
@@ -303,9 +292,8 @@ public class userdashboard extends javax.swing.JFrame {
                 String weight   = table.getValueAt(row, 3).toString();
                 String sender   = table.getValueAt(row, 4).toString();
                 String receiver = table.getValueAt(row, 5).toString();
-                String status   = table.getValueAt(row, 6).toString();
 
-                Update up = new Update(p_id, a_id, name, type, weight, sender, receiver, status);
+                Update up = new Update(p_id, a_id, name, type, weight, "0", sender, "", receiver, "", status);
                 up.setVisible(true);
                 this.dispose();
 
@@ -333,6 +321,13 @@ public class userdashboard extends javax.swing.JFrame {
             return;
         }
 
+        // --- NEW STATUS CHECK START ---
+        String status = table.getValueAt(row, 6).toString();
+        if (status.equalsIgnoreCase("On Going") || status.equalsIgnoreCase("Delivered") || status.equalsIgnoreCase("On Transit")) {
+            JOptionPane.showMessageDialog(this, "Cannot delete a parcel that is " + status + "!");
+            return; // Stops the deletion process
+        }
+        // --- NEW STATUS CHECK END ---
 
         int confirm = JOptionPane.showConfirmDialog(this, 
                 "Are you sure you want to delete this parcel?", 
@@ -343,15 +338,12 @@ public class userdashboard extends javax.swing.JFrame {
 
         try {
             int id = Integer.parseInt(table.getValueAt(row, 0).toString());
-
             config con = new config();
             String sql = "DELETE FROM tbl_parcel WHERE p_id = ?";
-
             con.addRecord(sql, id); 
 
             JOptionPane.showMessageDialog(this, "Parcel deleted successfully!");
             displayParcels(); 
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
@@ -380,12 +372,12 @@ public class userdashboard extends javax.swing.JFrame {
             return;
         }
 
-        // This ensures your search still respects the logged-in Account ID (a_id)
-        String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = " + currentUserId + " " +
-                     "AND (p_name LIKE '%" + keyword + "%' OR p_type LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%')";
+        String sql = "SELECT p_id, p_name, p_type, p_weight, s_address, r_address, p_status " +
+                     "FROM tbl_parcel WHERE a_id = '" + currentUserId + "' " +
+                     "AND (p_name LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%' " +
+                     "OR s_address LIKE '%" + keyword + "%' OR r_address LIKE '%" + keyword + "%')";
 
-        conf.displayData(sql, table); 
+        conf.displayData(sql, table);
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -412,14 +404,6 @@ public class userdashboard extends javax.swing.JFrame {
         setColor(jPanel6);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseExited
 
-    private void SelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseEntered
-        resetColor(Select);        // TODO add your handling code here:
-    }//GEN-LAST:event_SelectMouseEntered
-
-    private void SelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseExited
-        setColor(Select);        // TODO add your handling code here:
-    }//GEN-LAST:event_SelectMouseExited
-
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
             
         SendParcel Send = new SendParcel();
@@ -432,22 +416,6 @@ public class userdashboard extends javax.swing.JFrame {
         Home1.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
-
-    private void SelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseClicked
-
-        int row = table.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a parcel from the table first!");
-            return;
-        }
-
-        String p_id = table.getValueAt(row, 0).toString();
-        Riders selectRider = new Riders();
-        selectRider.parcel_id = p_id; 
-
-        selectRider.setVisible(true);
-        this.dispose(); 
-    }//GEN-LAST:event_SelectMouseClicked
 
     /**
      * @param args the command line arguments
@@ -486,14 +454,12 @@ public class userdashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SearchText;
-    private javax.swing.JPanel Select;
     private javax.swing.JPanel Send;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

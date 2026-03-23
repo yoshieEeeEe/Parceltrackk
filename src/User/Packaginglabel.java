@@ -19,7 +19,7 @@ public class Packaginglabel extends javax.swing.JFrame {
     /**
      * Creates new form Packaginglabel
      */
-    public Packaginglabel(String id, String sender, String receiver, String weight) {
+    public Packaginglabel(String id, String sender, String receiver, String weight, String s_address, String r_address) {
         
         if (Session.getUserId() == 0) { 
         JOptionPane.showMessageDialog(null, "Login Required!");
@@ -29,10 +29,15 @@ public class Packaginglabel extends javax.swing.JFrame {
         }
         initComponents();
         
+// Assigning the data to your labels
     jLabel13.setText(id);      
-    jLabel9.setText(sender);    
-    jLabel4.setText(receiver);  
+    jLabel9.setText(sender);   
+    jLabel4.setText(receiver); 
     jLabel11.setText(weight);
+    
+    // Mapping the new address data to your UI labels
+    Sender_address.setText(s_address); 
+    ReceiverAddress.setText(r_address);
     }
         private void printRecord(JPanel panel) {
         java.awt.print.PrinterJob printerJob = java.awt.print.PrinterJob.getPrinterJob();
@@ -73,18 +78,20 @@ public class Packaginglabel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        ReceiverAddress = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        Sender_address = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,10 +107,8 @@ public class Packaginglabel extends javax.swing.JFrame {
         jLabel2.setText("APPROVED BY: Adrian A. Jurilla");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 240, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel3.setText("RECEIVER_ADDRESS:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 180, 30));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 210, 30));
+        ReceiverAddress.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jPanel1.add(ReceiverAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 180, 20));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Packaging.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 390, 210));
@@ -124,12 +129,8 @@ public class Packaginglabel extends javax.swing.JFrame {
         jLabel8.setText("PARCEL ID:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 20));
 
-        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 190, 30));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel10.setText("SENDER_ADDRESS:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 160, 30));
+        Sender_address.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jPanel1.add(Sender_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 160, 20));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back (2).png"))); // NOI18N
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,11 +139,29 @@ public class Packaginglabel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 320, 80));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 60, 20));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 60, 20));
 
         jLabel14.setText("WEIGHT:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 70, 20));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 160, 20));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 160, 20));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setText("RECEIVER:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 130, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel10.setText("SENDER:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 130, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 590));
 
@@ -208,12 +227,14 @@ private void savePanelAsImage(JPanel panel) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Packaginglabel("", "", "", "").setVisible(true);
+                new Packaginglabel("", "", "", "","","").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ReceiverAddress;
+    private javax.swing.JLabel Sender_address;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

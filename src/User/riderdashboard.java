@@ -32,16 +32,37 @@ public class riderdashboard extends javax.swing.JFrame {
         return; 
         }
         initComponents();
+        jLabel3.setText("0");
         displayParcels();
+        countDelivered();
+        
+        
     }
     public void displayParcels() {
         config conf = new config();
-        int loggedInRiderId = Session.getUserId();
-        
-        String sql = "SELECT p_id, p_type, p_weight, sender_address, receiver_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = ? AND (p_status = 'On going' OR p_status = 'Delivered')";
-        
+        int loggedInRiderId = Session.getUserId(); 
+
+        String sql = "SELECT p_id, p_name, s_name, r_name, p_type, p_weight, s_address, r_address, p_status " +
+                     "FROM tbl_parcel WHERE a_id = ? " +
+                     "AND (p_status = 'Approved' OR p_status = 'In Transit' OR p_status = 'On Going' OR p_status = 'Delivered')";
+
         conf.displayData(sql, table, loggedInRiderId); 
+    }
+    public void countDelivered() {
+        String sql = "SELECT COUNT(*) FROM tbl_parcel WHERE a_id = ? AND p_status = 'Delivered'";
+        try (java.sql.Connection conn = config.connectDB(); 
+             java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, Session.getUserId());
+            try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    jLabel3.setText(String.valueOf(rs.getInt(1)));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error counting parcels: " + e.getMessage());
+            jLabel3.setText("0"); 
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +77,7 @@ public class riderdashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
@@ -64,6 +86,8 @@ public class riderdashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Send = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -84,6 +108,10 @@ public class riderdashboard extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 50)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 90, 90));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 130));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
@@ -95,9 +123,9 @@ public class riderdashboard extends javax.swing.JFrame {
                 SearchTextActionPerformed(evt);
             }
         });
-        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 350, 40));
+        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 350, 40));
 
-        jPanel13.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel13.setBackground(new java.awt.Color(0, 102, 153));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,13 +140,19 @@ public class riderdashboard extends javax.swing.JFrame {
         });
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("SEARCH");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 120, 40));
+        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 110, 40));
 
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,13 +167,14 @@ public class riderdashboard extends javax.swing.JFrame {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("PROFILE");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 60));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, 40));
 
-        Send.setBackground(new java.awt.Color(96, 165, 250));
+        Send.setBackground(new java.awt.Color(0, 102, 153));
         Send.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,11 +189,34 @@ public class riderdashboard extends javax.swing.JFrame {
         });
         Send.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("UPDATE PARCEL");
-        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        Send.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 170, 60));
+        jPanel3.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 180, 40));
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("PACKAGING");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 980, 80));
 
@@ -179,7 +237,7 @@ public class riderdashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 840, 350));
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 840, 370));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
@@ -198,38 +256,34 @@ public class riderdashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
          
-    public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+        public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
     private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTextActionPerformed
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
-        config conf = new config();
-           String keyword = SearchText.getText().trim();
-           int riderId = Session.getUserId();
+    config conf = new config();
+        String keyword = SearchText.getText().trim();
+        int riderId = Session.getUserId();
 
-           if (keyword.isEmpty()) {
-               displayParcels();
-               return;
-           }
-
-           String sql = "SELECT p_id, a_id, p_type, p_weight, sender_address, receiver_address, p_status " +
-                        "FROM tbl_parcel WHERE p_Rider_id = '" + riderId + "' AND (" +
-                        "p_type LIKE '%" + keyword + "%' OR p_id LIKE '%" + keyword + "%' OR p_status LIKE '%" + keyword + "%')";
-
-           conf.displayData(sql, table);
-
-           if (table.getRowCount() == 0) {
-               JOptionPane.showMessageDialog(this, "No matching assigned parcels found.");
-               displayParcels();
+        if (keyword.isEmpty()) {
+            displayParcels();
+            return;
         }
 
+        String sql = "SELECT p_id, p_name, s_name, r_name, p_type, p_weight, s_address, r_address, p_status " +
+                     "FROM tbl_parcel WHERE a_id = ? AND (" +
+                     "p_name LIKE ? OR p_type LIKE ? OR p_id LIKE ? OR p_status LIKE ? OR s_name LIKE ? OR r_name LIKE ?)";
+
+        String searchKey = "%" + keyword + "%";
+
+    conf.displayData(sql, table, riderId, searchKey, searchKey, searchKey, searchKey, searchKey, searchKey);
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
@@ -244,46 +298,36 @@ public class riderdashboard extends javax.swing.JFrame {
 
     int row = table.getSelectedRow(); 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a parcel from the table first!");
+            JOptionPane.showMessageDialog(this, "Please select a parcel from the table!");
             return;
         }
 
         try {
-            // 1. Get data from the table
-            // Note: Check if these column numbers match your table exactly!
             String pId = table.getValueAt(row, 0).toString();
-            String weight = table.getValueAt(row, 2).toString();
-            String sender = table.getValueAt(row, 3).toString();
-            String receiver = table.getValueAt(row, 4).toString();
-            String currentStatus = table.getValueAt(row, 5).toString();
 
-            // 2. Redirection Logic
-            if (currentStatus.equalsIgnoreCase("Delivered")) {
-                // Create the frame and pass data
-                Packaginglabel label = new Packaginglabel(pId, sender, receiver, weight);
-                label.setVisible(true);
-                this.dispose();
-            } else {
-                int confirm = JOptionPane.showConfirmDialog(this, 
-                    "Mark as Delivered and generate label?", "Confirm", JOptionPane.YES_NO_OPTION);
+            String currentStatus = table.getValueAt(row, 7).toString(); 
 
+            config conf = new config();
+
+            if (currentStatus.equalsIgnoreCase("Approved") || currentStatus.equalsIgnoreCase("In Transit")) {
+                int confirm = JOptionPane.showConfirmDialog(this, "Accept this parcel and start delivery?", "Pickup Confirmation", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    config conf = new config();
-                    String sql = "UPDATE tbl_parcel SET p_status = 'Delivered' WHERE p_id = ?";
-                    // Use the method that accepts the parameters for your SQL
-                    conf.addRecord(sql, pId); 
-
-                    Packaginglabel label = new Packaginglabel(pId, sender, receiver, weight);
-                    label.setVisible(true);
-                    this.dispose();
+                    conf.addRecord("UPDATE tbl_parcel SET p_status = 'On Going' WHERE p_id = ?", pId);
+                    displayParcels();
                 }
-            }
+            } 
+            else if (currentStatus.equalsIgnoreCase("On Going")) {
+                int confirm = JOptionPane.showConfirmDialog(this, "Has this parcel been successfully delivered?", "Delivery Completion", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    conf.addRecord("UPDATE tbl_parcel SET p_status = 'Delivered' WHERE p_id = ?", pId);
+                    JOptionPane.showMessageDialog(this, "Parcel #" + pId + " marked as Delivered!");
+                    displayParcels();
+                    countDelivered(); 
+                }
+            } 
         } catch (Exception e) {
-            // This will tell you EXACTLY what the error is in the output console
-            System.out.println("Error: " + e.getMessage());
-            JOptionPane.showMessageDialog(this, "Error processing selection: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
-    
     }//GEN-LAST:event_SendMouseClicked
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
@@ -307,6 +351,52 @@ public class riderdashboard extends javax.swing.JFrame {
         Home1.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+int row = table.getSelectedRow(); 
+    if (row == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a parcel!");
+        return;
+    }
+
+    try {
+        // Ensure index 7 is your 'p_status' column
+        String currentStatus = table.getValueAt(row, 7).toString(); 
+
+        if (currentStatus.equalsIgnoreCase("Delivered")) {
+            // Pull data from the table rows
+            String pId = table.getValueAt(row, 0).toString();
+            String sender = table.getValueAt(row, 1).toString();
+            String receiver = table.getValueAt(row, 2).toString();
+            String weight = table.getValueAt(row, 4).toString();
+            
+            // Critical: Ensure these indexes (5 and 6) match your SQL SELECT order
+            String sAddress = table.getValueAt(row, 5).toString(); 
+            String rAddress = table.getValueAt(row, 6).toString(); 
+
+            // This line will no longer be an error once Step 1 is done
+            Packaginglabel labelFrame = new Packaginglabel(pId, sender, receiver, weight, sAddress, rAddress);
+            labelFrame.setVisible(true);
+            this.dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(this, "Only Delivered parcels can go to Packaging.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }      // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        resetColor(jPanel4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        setColor(jPanel4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseExited
 
     /**
      * @param args the command line arguments
@@ -350,11 +440,14 @@ public class riderdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;

@@ -57,6 +57,7 @@ public class Register extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Email:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
@@ -68,6 +69,7 @@ public class Register extends javax.swing.JFrame {
         });
         jPanel3.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 270, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Type:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
@@ -79,11 +81,12 @@ public class Register extends javax.swing.JFrame {
         });
         jPanel3.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Password:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
-        registerpanel.setBackground(new java.awt.Color(96, 165, 250));
+        registerpanel.setBackground(new java.awt.Color(0, 102, 153));
         registerpanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registerpanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,18 +101,20 @@ public class Register extends javax.swing.JFrame {
         });
         registerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Register");
-        registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
+        registerpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, -1));
 
         jPanel3.add(registerpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 230, 30));
         jPanel3.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Name:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 40)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Sign up");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
@@ -152,12 +157,13 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
              
         public void setColor(JPanel p){
-            p.setBackground(new Color(96,165,250));
-        }
-
-        public void resetColor(JPanel p2){
-            p2.setBackground(new Color(0,102,153));
-        }
+        p.setBackground(new Color(0,102,153));
+    }
+    
+    public void resetColor(JPanel p2){
+        p2.setBackground(new Color(96,165,250));
+    }
+    
     private void loginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseClicked
         Login loginbtn = new Login();
         loginbtn.setVisible(true);

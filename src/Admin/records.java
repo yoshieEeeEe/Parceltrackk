@@ -32,11 +32,21 @@ public class records extends javax.swing.JFrame {
     }
         initComponents();
         displayParcels();
+        displayPayments();
     }
-        void displayParcels(){
+    void displayParcels(){
         config cn = new config();
-        String sql = "SELECT * FROM tbl_parcel";
-        cn.displayData(sql, table);
+        // Added s_address and r_address to match your database images
+        // Note: Removed 'sender_address' and 'receiver_address' because your DB uses 's_address' and 'r_address'
+        String sql = "SELECT p_id, a_id, p_name, p_type, p_weight, p_amount, s_address, r_address, p_status FROM tbl_parcel";
+        cn.displayData(sql, Parceltbl);
+    }
+
+    public void displayPayments() {
+        config cn = new config();
+        // This matches the Paymenttbl model (t_id, p_id, amount_paid, payment_status, t_date)
+        String sql = "SELECT t_id, p_id, amount_paid, payment_status, t_date FROM tbl_parcel_transaction";
+        cn.displayData(sql, Paymenttbl); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,17 +65,23 @@ public class records extends javax.swing.JFrame {
         SearchText = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         addbtn = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        addbtn1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Parceltbl = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Paymenttbl = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,15 +91,15 @@ public class records extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("TRANSACTIONS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, 60));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New logo.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 70));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 130));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1470, 130));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
         jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
@@ -94,9 +110,9 @@ public class records extends javax.swing.JFrame {
                 SearchTextActionPerformed(evt);
             }
         });
-        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 340, 40));
+        jPanel3.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 340, 40));
 
-        jPanel13.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel13.setBackground(new java.awt.Color(0, 102, 153));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,55 +127,14 @@ public class records extends javax.swing.JFrame {
         });
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel10.setText("Search");
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("SEARCH");
         jPanel13.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 40));
+        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, 130, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 980, 80));
-
-        jPanel8.setBackground(new java.awt.Color(0, 102, 153));
-        jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(table);
-
-        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 670, 400));
-
-        jPanel6.setBackground(new java.awt.Color(96, 165, 250));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
-            }
-        });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel4.setText("BACK");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
-
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 220, 70));
-
-        addbtn.setBackground(new java.awt.Color(96, 165, 250));
+        addbtn.setBackground(new java.awt.Color(0, 102, 153));
         addbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         addbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,13 +149,14 @@ public class records extends javax.swing.JFrame {
         });
         addbtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("ADD");
-        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        addbtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        jPanel8.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 220, 70));
+        jPanel3.add(addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 40));
 
-        jPanel10.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel10.setBackground(new java.awt.Color(0, 102, 153));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,13 +171,14 @@ public class records extends javax.swing.JFrame {
         });
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("UPDATE");
-        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 220, 70));
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 150, 40));
 
-        jPanel12.setBackground(new java.awt.Color(96, 165, 250));
+        jPanel12.setBackground(new java.awt.Color(0, 102, 153));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -216,13 +193,107 @@ public class records extends javax.swing.JFrame {
         });
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("DELETE");
-        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jPanel8.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 220, 70));
+        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 40));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
+        addbtn1.setBackground(new java.awt.Color(0, 102, 153));
+        addbtn1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addbtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addbtn1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addbtn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addbtn1MouseExited(evt);
+            }
+        });
+        addbtn1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("APPROVE");
+        addbtn1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jPanel3.add(addbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 140, 40));
+
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("BACK");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 150, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1470, 80));
+
+        jPanel8.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Parceltbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(Parceltbl);
+
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, 600, 430));
+
+        Paymenttbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "t_id", "p_id", "amount_paid", "payment_status", "t_date"
+            }
+        ));
+        jScrollPane2.setViewportView(Paymenttbl);
+        if (Paymenttbl.getColumnModel().getColumnCount() > 0) {
+            Paymenttbl.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 760, 430));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("PAYMENT");
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 100, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("PARCEL");
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 50, 80, 30));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 1470, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,82 +309,56 @@ public class records extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-          public void setColor(JPanel p){
-        p.setBackground(new Color(96,165,250));
+           public void setColor(JPanel p){
+        p.setBackground(new Color(0,102,153));
     }
     
     public void resetColor(JPanel p2){
-        p2.setBackground(new Color(0,102,153));
+        p2.setBackground(new Color(96,165,250));
     }
-    private void addbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseClicked
-        addparcel addbtn = new addparcel ();
-        addbtn.setVisible(true);
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseClicked
-
-    private void addbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseEntered
-        resetColor(addbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseEntered
-
-    private void addbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseExited
-        setColor(addbtn);        // TODO add your handling code here:
-    }//GEN-LAST:event_addbtnMouseExited
-
-    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
-    int row = table.getSelectedRow();
-    if (row != -1) {
-        try {
-
-            int p_id = Integer.parseInt(table.getValueAt(row, 0).toString());
-            int a_id = Integer.parseInt(table.getValueAt(row, 1).toString());
-
-            String name     = table.getValueAt(row, 2).toString(); 
-            String type     = table.getValueAt(row, 3).toString();
-            String weight   = table.getValueAt(row, 4).toString();
-            String sender   = table.getValueAt(row, 5).toString();
-            String receiver = table.getValueAt(row, 6).toString();
-            String status   = table.getValueAt(row, 7).toString();
-
-            Updateparcel up = new Updateparcel(p_id, a_id, name, type, weight, sender, receiver, status);
-            up.setVisible(true);
-            this.dispose();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-    } else {
-        JOptionPane.showMessageDialog(null, "Please select a parcel from the table first!", "No Selection", JOptionPane.WARNING_MESSAGE);
-    }
-    }//GEN-LAST:event_jPanel10MouseClicked
-
-    private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
-        resetColor(jPanel10);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel10MouseEntered
-
-    private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
-        setColor(jPanel10);        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel10MouseExited
-
+    
     private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
-        int row = table.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Select a user first!");
+
+        int parcelRow = Parceltbl.getSelectedRow();
+        int paymentRow = Paymenttbl.getSelectedRow();
+
+        config con = new config();
+        String targetID = "";
+
+        if (parcelRow != -1) {
+            targetID = Parceltbl.getValueAt(parcelRow, 0).toString(); 
+
+            int confirm = JOptionPane.showConfirmDialog(this, 
+                "This will delete Parcel ID: " + targetID + " and ALL its payment history. Proceed?", 
+                "Confirm Delete", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                con.addRecord("DELETE FROM tbl_parcel_transaction WHERE p_id = ?", targetID);
+                con.addRecord("DELETE FROM tbl_parcel WHERE p_id = ?", targetID);
+
+                JOptionPane.showMessageDialog(this, "Records removed from both tables.");
+            }
+        } 
+        else if (paymentRow != -1) {
+            targetID = Paymenttbl.getValueAt(paymentRow, 0).toString(); 
+
+            int confirm = JOptionPane.showConfirmDialog(this, 
+                "Delete only this specific transaction record (ID: " + targetID + ")?", 
+                "Confirm Transaction Delete", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                con.addRecord("DELETE FROM tbl_parcel_transaction WHERE t_id = ?", targetID);
+                JOptionPane.showMessageDialog(this, "Transaction record deleted.");
+            }
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Please select a row from either the Parcel or Payment table.");
             return;
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this parcel?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
 
-        if (confirm != JOptionPane.YES_OPTION) return;
-
-        int id = Integer.parseInt(table.getValueAt(row, 0).toString());
-
-        config con = new config();
-        String sql = "DELETE FROM tbl_parcel WHERE p_id = ?";
-
-        con.addRecord(sql, id);
-
-        JOptionPane.showMessageDialog(this, "Parcel deleted successfully!");
         displayParcels();
+        displayPayments();
     }//GEN-LAST:event_jPanel12MouseClicked
 
     private void jPanel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseEntered
@@ -344,10 +389,10 @@ public class records extends javax.swing.JFrame {
                      "OR p_name LIKE '%" + keyword + "%' " +
                      "OR p_id LIKE '%" + keyword + "%'";
 
-        conf.displayData(sql, table);
+        conf.displayData(sql, Parceltbl);
 
      
-        if (table.getRowCount() == 0) {
+        if (Parceltbl.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "No matching records found.");
             displayParcels();
         }
@@ -374,6 +419,96 @@ public class records extends javax.swing.JFrame {
         Back.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void addbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtn1MouseClicked
+    int paymentRow = Paymenttbl.getSelectedRow();
+
+        if (paymentRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a record from the Payment table to approve.");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to approve this transaction?", "Confirm Approval", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) return;
+
+        config con = new config();
+
+        String t_id = Paymenttbl.getValueAt(paymentRow, 0).toString(); 
+        String p_id = Paymenttbl.getValueAt(paymentRow, 1).toString(); 
+
+        try {
+            String sqlTrans = "UPDATE tbl_parcel_transaction SET payment_status = 'Paid' WHERE t_id = ?";
+            con.addRecord(sqlTrans, t_id); 
+
+            String sqlParcel = "UPDATE tbl_parcel SET p_status = 'Approved' WHERE p_id = ?";
+            con.addRecord(sqlParcel, p_id);
+
+            JOptionPane.showMessageDialog(this, "Transaction Approved and Paid!");
+
+            displayParcels();
+            displayPayments();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error during approval: " + e.getMessage());
+        }      
+    }//GEN-LAST:event_addbtn1MouseClicked
+
+    private void addbtn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtn1MouseEntered
+        resetColor(addbtn1);      // TODO add your handling code here:
+    }//GEN-LAST:event_addbtn1MouseEntered
+
+    private void addbtn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtn1MouseExited
+        setColor(addbtn1);  // TODO add your handling code here:
+    }//GEN-LAST:event_addbtn1MouseExited
+
+    private void addbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseExited
+        setColor(addbtn);        // TODO add your handling code here:
+    }//GEN-LAST:event_addbtnMouseExited
+
+    private void addbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseEntered
+        resetColor(addbtn);        // TODO add your handling code here:
+    }//GEN-LAST:event_addbtnMouseEntered
+
+    private void addbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbtnMouseClicked
+        addparcel addbtn = new addparcel ();
+        addbtn.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_addbtnMouseClicked
+
+    private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
+        setColor(jPanel10);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel10MouseExited
+
+    private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
+        resetColor(jPanel10);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel10MouseEntered
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+        int row = Parceltbl.getSelectedRow();
+        if (row != -1) {
+            try {
+
+                int p_id = Integer.parseInt(Parceltbl.getValueAt(row, 0).toString());
+                int a_id = Integer.parseInt(Parceltbl.getValueAt(row, 1).toString());
+                String name     = Parceltbl.getValueAt(row, 2).toString();
+                String type     = Parceltbl.getValueAt(row, 3).toString();
+                String weight   = Parceltbl.getValueAt(row, 4).toString();
+                String amount   = Parceltbl.getValueAt(row, 5).toString();
+                String sAddress = Parceltbl.getValueAt(row, 6).toString();
+                String rAddress = Parceltbl.getValueAt(row, 7).toString();
+                String status   = Parceltbl.getValueAt(row, 8).toString();
+
+                Updateparcel up = new Updateparcel(p_id, a_id, name, type, weight, amount, "", sAddress, "", rAddress, status);
+                up.setVisible(true);
+                this.dispose();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Selection Error: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a parcel first!");
+        }
+    }//GEN-LAST:event_jPanel10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -411,14 +546,20 @@ public class records extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Parceltbl;
+    private javax.swing.JTable Paymenttbl;
     private javax.swing.JTextField SearchText;
     private javax.swing.JPanel addbtn;
+    private javax.swing.JPanel addbtn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -429,6 +570,6 @@ public class records extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
