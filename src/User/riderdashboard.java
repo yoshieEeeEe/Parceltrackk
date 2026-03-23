@@ -305,28 +305,35 @@ public class riderdashboard extends javax.swing.JFrame {
         try {
             String pId = table.getValueAt(row, 0).toString();
 
-            String currentStatus = table.getValueAt(row, 7).toString(); 
+            String currentStatus = table.getValueAt(row, 8).toString(); 
 
             config conf = new config();
 
             if (currentStatus.equalsIgnoreCase("Approved") || currentStatus.equalsIgnoreCase("In Transit")) {
-                int confirm = JOptionPane.showConfirmDialog(this, "Accept this parcel and start delivery?", "Pickup Confirmation", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, 
+                    "Accept this parcel and start delivery?", "Pickup Confirmation", JOptionPane.YES_NO_OPTION);
+
                 if (confirm == JOptionPane.YES_OPTION) {
                     conf.addRecord("UPDATE tbl_parcel SET p_status = 'On Going' WHERE p_id = ?", pId);
                     displayParcels();
                 }
             } 
             else if (currentStatus.equalsIgnoreCase("On Going")) {
-                int confirm = JOptionPane.showConfirmDialog(this, "Has this parcel been successfully delivered?", "Delivery Completion", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, 
+                    "Has this parcel been successfully delivered?", "Delivery Completion", JOptionPane.YES_NO_OPTION);
+
                 if (confirm == JOptionPane.YES_OPTION) {
                     conf.addRecord("UPDATE tbl_parcel SET p_status = 'Delivered' WHERE p_id = ?", pId);
                     JOptionPane.showMessageDialog(this, "Parcel #" + pId + " marked as Delivered!");
                     displayParcels();
                     countDelivered(); 
                 }
-            } 
+            } else {
+                JOptionPane.showMessageDialog(this, "This parcel is already " + currentStatus + ".");
+            }
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error updating status: " + e.getMessage());
         }
     }//GEN-LAST:event_SendMouseClicked
 
@@ -357,37 +364,32 @@ public class riderdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-int row = table.getSelectedRow(); 
-    if (row == -1) {
-        JOptionPane.showMessageDialog(this, "Please select a parcel!");
-        return;
-    }
-
-    try {
-        // Ensure index 7 is your 'p_status' column
-        String currentStatus = table.getValueAt(row, 7).toString(); 
-
-        if (currentStatus.equalsIgnoreCase("Delivered")) {
-            // Pull data from the table rows
-            String pId = table.getValueAt(row, 0).toString();
-            String sender = table.getValueAt(row, 1).toString();
-            String receiver = table.getValueAt(row, 2).toString();
-            String weight = table.getValueAt(row, 4).toString();
-            
-            // Critical: Ensure these indexes (5 and 6) match your SQL SELECT order
-            String sAddress = table.getValueAt(row, 5).toString(); 
-            String rAddress = table.getValueAt(row, 6).toString(); 
-
-            // This line will no longer be an error once Step 1 is done
-            Packaginglabel labelFrame = new Packaginglabel(pId, sender, receiver, weight, sAddress, rAddress);
-            labelFrame.setVisible(true);
-            this.dispose(); 
-        } else {
-            JOptionPane.showMessageDialog(this, "Only Delivered parcels can go to Packaging.");
+    int row = table.getSelectedRow(); 
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a parcel!");
+            return;
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }      // TODO add your handling code here:
+
+        try {
+            String currentStatus = table.getValueAt(row, 8).toString(); 
+
+            if (currentStatus.equalsIgnoreCase("Delivered")) {
+                String pId = table.getValueAt(row, 0).toString();
+                String sender = table.getValueAt(row, 2).toString();  
+                String receiver = table.getValueAt(row, 3).toString(); 
+                String weight = table.getValueAt(row, 5).toString();  
+                String sAddress = table.getValueAt(row, 6).toString(); 
+                String rAddress = table.getValueAt(row, 7).toString(); 
+
+                Packaginglabel labelFrame = new Packaginglabel(pId, sender, receiver, weight, sAddress, rAddress);
+                labelFrame.setVisible(true);
+                this.dispose(); 
+            } else {
+                JOptionPane.showMessageDialog(this, "Only Delivered parcels can go to Packaging.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered

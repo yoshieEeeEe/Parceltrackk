@@ -96,18 +96,18 @@ public class updates extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Name:");
         jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-        jPanel8.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 270, -1));
+        jPanel8.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 270, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Email:");
         jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-        jPanel8.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 270, -1));
+        jPanel8.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 270, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setText("Password:");
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 204, 204));
@@ -135,8 +135,8 @@ public class updates extends javax.swing.JFrame {
         jPanel15.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jPanel8.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 140, 60));
-        jPanel8.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 270, -1));
-        jPanel8.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 270, -1));
+        jPanel8.add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 270, -1));
+        jPanel8.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 270, -1));
 
         jPanel16.setBackground(new java.awt.Color(0, 102, 153));
         jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
