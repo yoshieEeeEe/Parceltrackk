@@ -21,6 +21,7 @@ public class riders extends javax.swing.JFrame {
      * Creates new form riders
      */
     public String parcel_id; // Global variable
+    public String selectedPid;
 
     public riders() {
         initComponents();
@@ -37,6 +38,7 @@ public class riders extends javax.swing.JFrame {
         }
         initComponents();
         this.parcel_id = pid; 
+        this.selectedPid = pid;
         displayRiders();
     }
     public void displayRiders() {
@@ -155,13 +157,10 @@ public class riders extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(table);
@@ -237,35 +236,42 @@ public class riders extends javax.swing.JFrame {
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
 
         int row = table.getSelectedRow();
-    if (row == -1) {
-        JOptionPane.showMessageDialog(this, "Please select a Rider first!");
-        return;
-    }
 
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Select a rider first!");
+            return;
+        }
+        String selectedRiderId = table.getValueAt(row, 0).toString();
+
+        
+        
 
     if (this.parcel_id == null || this.parcel_id.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Error: Parcel ID is missing. Cannot assign rider.");
         return;
     }
 
-    try {
-        config conf = new config();
-        String riderId = table.getValueAt(row, 0).toString(); 
-        String pId = this.parcel_id; 
-        String updateParcelSql = "UPDATE tbl_parcel SET a_id = ?, p_status = 'In Transit' WHERE p_id = ?";
-        conf.addRecord(updateParcelSql, riderId, pId);
-        int adminId = Session.getUserId();        
-        String insertSql = "INSERT INTO tbl_rider_transaction (p_id, ride_id, admin_id, status) VALUES (?, ?, ?, 'In Transit')";
-        conf.addRecord(insertSql, pId, riderId, String.valueOf(adminId));
+    int confirm = JOptionPane.showConfirmDialog(this,
+        "Assign this rider to the parcel?",
+        "Confirm Assignment",
+        JOptionPane.YES_NO_OPTION);
 
-        JOptionPane.showMessageDialog(this, "Success! Rider assigned to Parcel #" + pId);
+if (confirm == JOptionPane.YES_OPTION) {
+    try {
+        config con = new config();
+
+        String sql = "UPDATE tbl_parcel SET rider_id = ?, p_status = 'In Transit' WHERE p_id = ?";
+        con.addRecord(sql, selectedRiderId, selectedPid);
+
+        JOptionPane.showMessageDialog(this, "Rider assigned successfully!");
 
         new Assignment().setVisible(true);
         this.dispose();
 
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Database Error: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
+}
     }//GEN-LAST:event_SendMouseClicked
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered

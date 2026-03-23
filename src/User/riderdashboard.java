@@ -38,22 +38,25 @@ public class riderdashboard extends javax.swing.JFrame {
         
         
     }
+    
     public void displayParcels() {
-        config conf = new config();
-        int loggedInRiderId = Session.getUserId(); 
+    config conf = new config();
+    int loggedInRiderId = Session.getUserId(); 
 
-        String sql = "SELECT p_id, p_name, s_name, r_name, p_type, p_weight, s_address, r_address, p_status " +
-                     "FROM tbl_parcel WHERE a_id = ? " +
-                     "AND (p_status = 'Approved' OR p_status = 'In Transit' OR p_status = 'On Going' OR p_status = 'Delivered')";
+    String sql = "SELECT p_id, p_name, s_name, r_name, p_type, p_weight, s_address, r_address, p_status " +
+                 "FROM tbl_parcel WHERE rider_id = ? ORDER BY p_id DESC";
 
-        conf.displayData(sql, table, loggedInRiderId); 
-    }
+    conf.displayData(sql, table, loggedInRiderId); 
+}
+    
     public void countDelivered() {
-        String sql = "SELECT COUNT(*) FROM tbl_parcel WHERE a_id = ? AND p_status = 'Delivered'";
+        String sql = "SELECT COUNT(*) FROM tbl_parcel WHERE rider_id = ? AND p_status = 'Delivered'";
+
         try (java.sql.Connection conn = config.connectDB(); 
              java.sql.PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1, Session.getUserId());
+
             try (java.sql.ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     jLabel3.setText(String.valueOf(rs.getInt(1)));

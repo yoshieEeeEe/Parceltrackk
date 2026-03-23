@@ -33,6 +33,10 @@ public class userdashboard extends javax.swing.JFrame {
     }
         initComponents();
         displayParcels();
+        
+        new javax.swing.Timer(3000, e -> {
+            displayParcels();
+        }).start();
     }
     void displayParcels() {
         config cn = new config();
