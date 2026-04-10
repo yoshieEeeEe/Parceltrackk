@@ -5,18 +5,31 @@
             <url>src/Admin/riders.java</url>
             <bookmark id="1">
                 <name/>
-                <line>229</line>
+                <line>236</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/SendParcel.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/add.java</file>
             <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/Assignment.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/admindashboard.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/ridertransactions.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/records.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/logs.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/Updateparcel.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/userdashboard.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/users.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/profile.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/SendParcel.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/Packaginglabel.java</file>
             <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/Update.java</file>
             <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/riders.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/ridertransactions.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/updates.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/Admin/addparcel.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/User/riderdashboard.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Parceltrackk/src/config/config.java</file>
         </group>
     </open-files>
 </project-private>

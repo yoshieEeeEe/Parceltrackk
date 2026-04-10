@@ -53,10 +53,10 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Transactions = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        Assignment = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         Rider = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        Assignment = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -99,9 +99,9 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("USERS");
-        Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 70, 20));
+        Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 70, 20));
 
-        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 220, 60));
+        jPanel2.add(Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 270, 60));
 
         Home1.setBackground(new java.awt.Color(0, 102, 153));
         Home1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -121,9 +121,9 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("PROFILE");
-        Home1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, 20));
+        Home1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 90, 20));
 
-        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 220, 60));
+        jPanel2.add(Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 270, 60));
 
         Logs.setBackground(new java.awt.Color(0, 102, 153));
         Logs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -143,9 +143,9 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("LOGS");
-        Logs.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 60, 20));
+        Logs.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 60, 20));
 
-        jPanel2.add(Logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 220, 60));
+        jPanel2.add(Logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 270, 60));
 
         Transactions.setBackground(new java.awt.Color(0, 102, 153));
         Transactions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -165,9 +165,31 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("TRANSACTIONS");
-        Transactions.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        Transactions.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 220, 70));
+        jPanel2.add(Transactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 270, 70));
+
+        Rider.setBackground(new java.awt.Color(0, 102, 153));
+        Rider.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Rider.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RiderMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RiderMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RiderMouseExited(evt);
+            }
+        });
+        Rider.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("RIDER TRANSACTIONS");
+        Rider.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel2.add(Rider, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, 70));
 
         Assignment.setBackground(new java.awt.Color(0, 102, 153));
         Assignment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -187,31 +209,9 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("ASSIGNMENT");
-        Assignment.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 140, 20));
+        Assignment.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 140, 20));
 
-        jPanel2.add(Assignment, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 220, 60));
-
-        Rider.setBackground(new java.awt.Color(0, 102, 153));
-        Rider.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Rider.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RiderMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RiderMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RiderMouseExited(evt);
-            }
-        });
-        Rider.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel10.setText("RIDER");
-        Rider.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
-
-        jPanel2.add(Rider, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 220, 70));
+        jPanel2.add(Assignment, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 270, 60));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 340, 470));
 

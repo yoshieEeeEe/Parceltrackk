@@ -248,10 +248,10 @@ public class users extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("HOME");
+        jLabel2.setText("BACK");
         Home.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 260, 90));
+        jPanel8.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 260, 90));
 
         jPanel7.setBackground(new java.awt.Color(0, 102, 153));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -273,7 +273,7 @@ public class users extends javax.swing.JFrame {
         jLabel5.setText("MANAGE ACCOUNT");
         jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 90));
+        jPanel8.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 260, 90));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 980, 420));
 
